@@ -1,22 +1,20 @@
 import { Routes, Route } from "react-router-dom";
 
 import { App as HomeApp } from "@/apps/home-app/App";
-import { subApps } from "@/apps/subApps";
 import { RootLayout } from "@/components/layout/RootLayout";
 import { NotFoundPage } from "@/pages/NotFoundPage";
+import { useSubAppStore } from "@/stores/useSubAppStore";
 
 const PortalClient = (): JSX.Element => {
+  const subAppList = useSubAppStore((state) => state.subAppList);
+
   return (
     <Routes>
       <Route element={<RootLayout />}>
         <Route path="/" element={<HomeApp />} />
-        {(() => {
-          const elements: JSX.Element[] = [];
-          subApps.forEach((app, key) =>
-            elements.push(<Route key={key} path={`/apps/${key}/*`} element={<app.App />} />),
-          );
-          return elements;
-        })()}
+        {subAppList.map((app) => (
+          <Route key={app.metadata.id} path={`/apps/${app.metadata.id}/*`} element={<app.App />} />
+        ))}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

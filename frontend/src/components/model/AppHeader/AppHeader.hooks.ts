@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 import { WindowToggleMaximise } from "@wailsjs/runtime/runtime";
 
-import { subApps } from "@/apps/subApps";
 import { useOS } from "@/hooks/useOS";
 import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
+import { useSubAppStore } from "@/stores/useSubAppStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {
@@ -19,6 +19,7 @@ interface Action {
 
 const useAppHeader: ContainerHook<State, Action> = () => {
   const activeAppId = useActiveAppIdStore((state) => state.activeAppId);
+  const subAppList = useSubAppStore((state) => state.subAppList);
 
   const {
     state: { os },
@@ -34,13 +35,13 @@ const useAppHeader: ContainerHook<State, Action> = () => {
   }, [os]);
 
   useEffect(() => {
-    const subApp = activeAppId ? subApps.get(activeAppId) : undefined;
+    const subApp = subAppList.find((app) => app.metadata.id === activeAppId);
     if (subApp !== undefined) {
       setWindowTitle(subApp.metadata.title);
     } else {
       setWindowTitle("");
     }
-  }, [activeAppId]);
+  }, [activeAppId, subAppList]);
 
   return {
     state: {

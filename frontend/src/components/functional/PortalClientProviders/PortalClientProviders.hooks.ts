@@ -5,8 +5,11 @@ import { UpdateSessionAsync } from "@wailsjs/go/portalservice/Service";
 import { EventsOn } from "@wailsjs/runtime/runtime";
 
 import { metadata as homeAppMetadata } from "@/apps/home-app/App";
+import { subApps } from "@/apps/subApps";
 import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
 import { useSessionStore } from "@/stores/useSessionStore";
+import { useSubAppStore } from "@/stores/useSubAppStore";
+import { type SubApp } from "@/types/subApp";
 import { type ContainerHook } from "@/utils/containerHook";
 
 type State = Record<string, never>;
@@ -19,6 +22,14 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
 
   const setActiveAppId = useActiveAppIdStore((state) => state.setActiveAppId);
   const updateSession = useSessionStore((state) => state.updateSession);
+
+  const setSubAppList = useSubAppStore((state) => state.setSubAppList);
+
+  useEffect(() => {
+    const subAppList: SubApp[] = [];
+    subApps.forEach((app) => subAppList.push(app));
+    setSubAppList(subAppList);
+  }, [setSubAppList]);
 
   useEffect(() => {
     void UpdateSessionAsync();

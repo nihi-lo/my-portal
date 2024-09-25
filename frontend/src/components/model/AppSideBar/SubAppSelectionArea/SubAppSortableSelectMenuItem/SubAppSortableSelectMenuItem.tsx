@@ -2,7 +2,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Link } from "@nextui-org/react";
 
-import { subApps } from "@/apps/subApps";
+import { useSubAppStore } from "@/stores/useSubAppStore";
 import { type SubAppID } from "@/types/subAppID";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";
@@ -25,7 +25,9 @@ const SubAppSortableSelectMenuItem = (props: Props): JSX.Element => {
     transition,
   } = useSortable({ id: subAppID });
 
-  const app = subApps.get(subAppID);
+  const subAppList = useSubAppStore((store) => store.subAppList);
+
+  const app = subAppList.find((app) => app.metadata.id === subAppID);
   if (app === undefined) {
     return <></>;
   }
