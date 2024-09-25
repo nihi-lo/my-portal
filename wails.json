@@ -1,0 +1,16 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "my-portal",
+  "outputfilename": "my-portal",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "nihi-lo",
+    "email": "nihilo.369@gmail.com"
+  },
+  "info": {
+    "productVersion": "0.1.0"
+  }
+}

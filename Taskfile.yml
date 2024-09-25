@@ -1,0 +1,105 @@
+version: "3"
+
+tasks:
+  # Wailsアプリ の初期設定を行います
+  init:
+    cmds:
+      - cd frontend && npm install
+      - cd frontend && npm run format
+    silent: true
+
+  # ポータルアプリ に必要な各種ファイル群を生成します
+  generate:
+    cmds:
+      - go run ./cmd/generate/main.go {{.CLI_ARGS}}
+      - wails generate module
+      - cd frontend && npm install
+      - go fmt .
+      - cd frontend && npm run format
+    silent: true
+
+  # Wailsアプリ を開発モードで起動します
+  dev:
+    cmds:
+      - wails dev -loglevel "Warning"
+    silent: true
+
+  # Wailsアプリ をビルドします
+  build:
+    cmds:
+      - wails build
+    silent: true
+
+  # Prisma のスキーマファイルから新しいマイグレーションを生成し、ローカル(開発環境)のデータベースに適用します
+  db:generate:
+    cmds:
+      - |
+        if [ -z "{{.CLI_ARGS}}" ]; then
+          echo "Error: 実行にはアプリ名を指定する必要があります。例: task db:generate -- example-app"
+          exit 1
+        fi
+        cd frontend && npm run db:generate -- --schema src/apps/{{.CLI_ARGS}}/prisma/schema.prisma
+    silent: true
+
+  # マイグレーションを元にリモート(本番環境)のデータベースに適用します
+  db:migrate:
+    cmds:
+      - |
+        if [ -z "{{.CLI_ARGS}}" ]; then
+          echo "Error: 実行にはアプリ名を指定する必要があります。例: task db:migrate -- example-app"
+          exit 1
+        fi
+        cd frontend && npm run db:migrate -- --schema src/apps/{{.CLI_ARGS}}/prisma/schema.prisma
+    silent: true
+
+  # マイグレーションを生成せずに直接 Prisma のスキーマファイルをデータベースに適用します
+  db:push:
+    cmds:
+      - |
+        if [ -z "{{.CLI_ARGS}}" ]; then
+          echo "Error: 実行にはアプリ名を指定する必要があります。例: task db:push -- example-app"
+          exit 1
+        fi
+        cd frontend && npm run db:push -- --schema src/apps/{{.CLI_ARGS}}/prisma/schema.prisma
+    silent: true
+
+  # Prisma Studio を起動します
+  db:studio:
+    cmds:
+      - |
+        if [ -z "{{.CLI_ARGS}}" ]; then
+          echo "Error: 実行にはアプリ名を指定する必要があります。例: task db:studio -- example-app"
+          exit 1
+        fi
+        cd frontend && npm run db:studio -- --schema src/apps/{{.CLI_ARGS}}/prisma/schema.prisma
+    silent: true
+
+  # ソースコードの静的解析を実行します
+  lint:
+    cmds:
+      - cd frontend && npm run lint
+    silent: true
+
+  # コードを整形します
+  format:
+    cmds:
+      - cd frontend && npm run format
+    silent: true
+
+  # 単体テストを実施します
+  test:
+    cmds:
+      - cd frontend && npm run test
+    silent: true
+
+  # Vitest UI を起動します
+  test:ui:
+    cmds:
+      - cd frontend && npm run test:ui
+    silent: true
+
+  # npm package にアップデートがないかを確認します
+  ncu:
+    cmds:
+      - cd frontend && npx npm-check-updates -i --format group
+    silent: true
