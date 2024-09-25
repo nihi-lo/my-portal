@@ -10,8 +10,16 @@ import { type Metadata } from "@/types/metadata";
 export const metadata: Metadata = {
   id: "6876b3b6-307d-27ca-d845-6577357297c2",
   title: "学マス コンテストシミュ",
-  description: "",
-  Icon: () => <Image alt="アプリアイコン" radius="none" src={assets.img.AppIconImage} width={48} />,
+  description: "学園アイドルマスターのコンテストシミュレーター",
+  Icon: () => (
+    <Image
+      disableAnimation
+      alt="アプリアイコン"
+      radius="none"
+      src={assets.img.AppIconImage}
+      width={48}
+    />
+  ),
 };
 
 export const App = (): JSX.Element => {

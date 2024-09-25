@@ -10,8 +10,16 @@ import { type Metadata } from "@/types/metadata";
 export const metadata: Metadata = {
   id: "c4db13c7-0be5-cc07-5de5-9843f757b8df",
   title: "ゼンゼロ ビルドツール",
-  description: "",
-  Icon: () => <Image alt="アプリアイコン" radius="none" src={assets.img.AppIconImage} width={48} />,
+  description: "エージェント毎の音動機とディスク管理",
+  Icon: () => (
+    <Image
+      disableAnimation
+      alt="アプリアイコン"
+      radius="none"
+      src={assets.img.AppIconImage}
+      width={48}
+    />
+  ),
 };
 
 export const App = (): JSX.Element => {
