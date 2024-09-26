@@ -54,7 +54,7 @@ func (s *Service) GetOSAsync() string {
 }
 
 func (s *Service) SignInAsync() {
-	wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "loading")
+	wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "loading")
 
 	// ブラウザで認証ページを開く
 	wailsruntime.BrowserOpenURL(s.ctx, "http://localhost:3000/api/auth/signin")
@@ -67,7 +67,7 @@ func (s *Service) SignInAsync() {
 	// リスナーを作成
 	listener, err := net.Listen("tcp", "localhost:8080")
 	if err != nil {
-		wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "unauthenticated")
+		wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "unauthenticated")
 		return
 	}
 	defer listener.Close()
@@ -80,7 +80,7 @@ func (s *Service) SignInAsync() {
 	// 認証サーバーからのコールバックを待つ
 	conn, err := listener.Accept()
 	if err != nil {
-		wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "unauthenticated")
+		wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "unauthenticated")
 		return
 	}
 	defer conn.Close()
@@ -93,7 +93,7 @@ func (s *Service) SignInAsync() {
 		string(authHtml)
 	_, err = conn.Write([]byte(response))
 	if err != nil {
-		wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "unauthenticated")
+		wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "unauthenticated")
 		return
 	}
 
@@ -101,7 +101,7 @@ func (s *Service) SignInAsync() {
 	buffer := make([]byte, 1024)
 	n, err := conn.Read(buffer)
 	if err != nil {
-		wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "unauthenticated")
+		wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "unauthenticated")
 		return
 	}
 
@@ -121,29 +121,29 @@ func (s *Service) SignInAsync() {
 	// セッショントークンからセッション情報を取得
 	session, err := s.getSession(s.sessionToken)
 	if err != nil {
-		wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "unauthenticated")
+		wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "unauthenticated")
 		return
 	}
 
 	// 取得したセッション情報をクライアントへ通知
-	wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", session, "authenticated")
+	wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", session, "authenticated")
 }
 
 func (s *Service) UpdateSessionAsync() {
-	wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "loading")
+	wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "loading")
 
 	if s.sessionToken == "" {
-		wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "unauthenticated")
+		wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "unauthenticated")
 		return
 	}
 
 	session, err := s.getSession(s.sessionToken)
 	if err != nil {
-		wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", nil, "unauthenticated")
+		wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", nil, "unauthenticated")
 		return
 	}
 
-	wailsruntime.EventsEmit(s.ctx, "portal-client.onSessionTokenUpdate", session, "authenticated")
+	wailsruntime.EventsEmit(s.ctx, "portalservice.onSessionTokenUpdate", session, "authenticated")
 }
 
 func (s *Service) getSession(sessionToken string) (NextAuthSession, error) {

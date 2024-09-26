@@ -12,7 +12,7 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-ki
 import { Divider, Link } from "@nextui-org/react";
 import { useState } from "react";
 
-import { metadata as homeAppMetadata } from "@/apps/home-app/App";
+import { metadata as homeAppMetadata } from "@/apps/home-app";
 import { VStack } from "@/components/ui";
 import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
 import { useFavoriteAppOrderStore } from "@/stores/useFavoriteAppOrderStore";

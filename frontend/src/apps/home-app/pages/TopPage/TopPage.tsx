@@ -1,6 +1,6 @@
-import { Button, Input, Link } from "@nextui-org/react";
+import { Link } from "@nextui-org/react";
 
-import { metadata as homeAppMetadata } from "@/apps/home-app/App";
+import { metadata as homeAppMetadata } from "@/apps/home-app";
 import { Container, HStack, VStack, Section } from "@/components/ui";
 import { useSubAppStore } from "@/stores/useSubAppStore";
 
@@ -9,25 +9,10 @@ import { useTopPage } from "./TopPage.hooks";
 const TopPage = (): JSX.Element => {
   const subAppList = useSubAppStore((state) => state.subAppList);
 
-  const {
-    state: { inputName, resultText },
-    action: { handleGreetClick, handleInputChange },
-  } = useTopPage();
+  const _ = useTopPage();
 
   return (
     <Container as="main">
-      <Section headingAs="h1" title="Welcome Wails App.">
-        <VStack align="start" justify="center" gap="sm">
-          <div>Please enter your name below 👇</div>
-          <HStack align="center" justify="center" gap="sm">
-            <Input label="Name" defaultValue={inputName} onValueChange={handleInputChange} />
-            <Button color="primary" onClick={handleGreetClick}>
-              Greet
-            </Button>
-          </HStack>
-          {resultText && <div>{resultText}</div>}
-        </VStack>
-      </Section>
       <Section headingAs="h1" title="アプリ一覧">
         <ul className="flex flex-col gap-2">
           {subAppList.reduce<React.ReactNode[]>((acc, app) => {

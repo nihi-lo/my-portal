@@ -4,7 +4,7 @@ import { useMatch } from "react-router-dom";
 import { UpdateSessionAsync } from "@wailsjs/go/portalservice/Service";
 import { EventsOn } from "@wailsjs/runtime/runtime";
 
-import { metadata as homeAppMetadata } from "@/apps/home-app/App";
+import { metadata as homeAppMetadata } from "@/apps/home-app";
 import { subApps } from "@/apps/subApps";
 import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
 import { useSessionStore } from "@/stores/useSessionStore";
@@ -36,7 +36,7 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
   }, []);
 
   useEffect(() => {
-    EventsOn("portal-client.onSessionTokenUpdate", updateSession);
+    EventsOn("portalservice.onSessionTokenUpdate", updateSession);
   }, [updateSession]);
 
   useEffect(() => {

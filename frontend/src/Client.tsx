@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import { App as HomeApp } from "@/apps/home-app/App";
+import { App as HomeApp } from "@/apps/home-app";
 import { RootLayout } from "@/components/layout/RootLayout";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { useSubAppStore } from "@/stores/useSubAppStore";

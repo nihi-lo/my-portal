@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-import { metadata as homeAppMetadata } from "@/apps/home-app/App";
+import { metadata as homeAppMetadata } from "@/apps/home-app";
 import { type SubAppID } from "@/types/subAppID";
 
 interface State {

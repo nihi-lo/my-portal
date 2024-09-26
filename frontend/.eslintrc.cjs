@@ -70,7 +70,7 @@ const config = {
       [
         {
           module: "@wailsjs/**",
-          allowReferenceFrom: ["**.hooks.ts", "**/hooks/**", "**/stores/**"],
+          allowReferenceFrom: ["**.hooks.ts", "**/hooks/**", "**/usecase/**"],
           allowSameModule: true,
         },
       ],

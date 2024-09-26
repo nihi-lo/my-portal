@@ -1,6 +1,6 @@
-import { metadata as gakusimAppMetadata, App as GakusimApp } from "@/apps/gakusim-app/App";
-import { metadata as homeAppMetadata, App as HomeApp } from "@/apps/home-app/App";
-import { metadata as zzzbuildAppMetadata, App as ZzzbuildApp } from "@/apps/zzzbuild-app/App";
+import { metadata as gakusimAppMetadata, App as GakusimApp } from "@/apps/gakusim-app";
+import { metadata as homeAppMetadata, App as HomeApp } from "@/apps/home-app";
+import { metadata as zzzbuildAppMetadata, App as ZzzbuildApp } from "@/apps/zzzbuild-app";
 import { type SubApp } from "@/types/subApp";
 import { type SubAppID } from "@/types/subAppID";
 
