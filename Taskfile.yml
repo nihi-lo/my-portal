@@ -27,7 +27,7 @@ tasks:
   # Wailsアプリ をビルドします
   build:
     cmds:
-      - wails build
+      - wails build -clean
     silent: true
 
   # Prisma のスキーマファイルから新しいマイグレーションを生成し、ローカル(開発環境)のデータベースに適用します

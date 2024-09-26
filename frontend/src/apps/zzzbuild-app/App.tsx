@@ -10,7 +10,7 @@ import { type Metadata } from "@/types/metadata";
 export const metadata: Metadata = {
   id: "c4db13c7-0be5-cc07-5de5-9843f757b8df",
   title: "ゼンゼロ ビルドツール",
-  description: "エージェント毎の音動機とディスク管理",
+  description: "エージェント毎に音動機とディスク管理",
   Icon: () => (
     <Image
       disableAnimation
