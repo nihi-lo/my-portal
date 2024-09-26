@@ -10,19 +10,32 @@ interface State {
 
 interface Action {
   setFavoriteApps: (by: SubAppID[]) => void;
+  addFavoriteAppId: (newAppId: SubAppID) => void;
+  removeFavoriteAppId: (removeAppId: SubAppID) => void;
 }
 
 const useFavoriteAppOrderStore = create<State & Action>()(
   persist(
     immer((set) => ({
       /* State */
-      favoriteApps: [
-        "6876b3b6-307d-27ca-d845-6577357297c2" /* gakusim-app */,
-        "c4db13c7-0be5-cc07-5de5-9843f757b8df" /* zzzbuild-app */,
-      ],
+      favoriteApps: [],
 
       /* Action */
       setFavoriteApps: (by) => set((state) => void (state.favoriteApps = by)),
+      addFavoriteAppId: (newAppId) =>
+        set((state) => {
+          if (state.favoriteApps.includes(newAppId)) {
+            return;
+          }
+          state.favoriteApps.push(newAppId);
+        }),
+      removeFavoriteAppId: (removeAppId) =>
+        set((state) => {
+          if (!state.favoriteApps.includes(removeAppId)) {
+            return;
+          }
+          state.favoriteApps = state.favoriteApps.filter((appId) => appId !== removeAppId);
+        }),
     })),
     {
       name: "portal-client.favorite-app-order",
