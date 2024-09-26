@@ -1,6 +1,6 @@
 import { Button, Divider, Link } from "@nextui-org/react";
 
-import { metadata as homeAppMetadata } from "@/apps/home-app";
+import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { Container, HStack, Section } from "@/components/ui";
 import { useFavoriteAppOrderStore } from "@/stores/useFavoriteAppOrderStore";
 import { useSubAppStore } from "@/stores/useSubAppStore";
@@ -26,7 +26,7 @@ const TopPage = (): JSX.Element => {
       <Section headingAs="h1" title="アプリ一覧">
         <ul className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
           {subAppList.reduce<React.ReactNode[]>((acc, app) => {
-            if (app.metadata.id === homeAppMetadata.id) {
+            if (app.metadata.id === stdAppsMetadata.id) {
               return acc;
             }
 

@@ -1,10 +1,11 @@
 import { Image } from "@nextui-org/react";
 import { Routes, Route } from "react-router-dom";
 
-import { assets } from "@/apps/zzzbuild-app/assets";
-import { TopPage } from "@/apps/zzzbuild-app/pages/TopPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { type Metadata } from "@/types/metadata";
+
+import { assets } from "./assets";
+import { TopPage } from "./pages/TopPage";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {

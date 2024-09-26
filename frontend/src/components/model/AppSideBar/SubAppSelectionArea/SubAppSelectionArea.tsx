@@ -12,7 +12,7 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-ki
 import { Divider, Link } from "@nextui-org/react";
 import { useState } from "react";
 
-import { metadata as homeAppMetadata } from "@/apps/home-app";
+import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { VStack } from "@/components/ui";
 import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
 import { useFavoriteAppOrderStore } from "@/stores/useFavoriteAppOrderStore";
@@ -52,13 +52,13 @@ const SubAppSelectionArea = (): JSX.Element => {
   return (
     <VStack align="center" py="sm" gap="sm">
       <SubAppSelectIcon
-        isSelected={activeAppId === homeAppMetadata.id}
+        isSelected={activeAppId === stdAppsMetadata.id}
         appIconContent={
-          <Link href={`/apps/${homeAppMetadata.id}`}>
-            <homeAppMetadata.Icon />
+          <Link href={`/apps/${stdAppsMetadata.id}`}>
+            <stdAppsMetadata.Icon />
           </Link>
         }
-        tooltipContent={homeAppMetadata.title}
+        tooltipContent={stdAppsMetadata.title}
       />
 
       <Divider className="w-4/5" />

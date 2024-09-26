@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-import { metadata as homeAppMetadata } from "@/apps/home-app";
+import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { type SubAppID } from "@/types/subAppID";
 
 interface State {
@@ -15,7 +15,7 @@ interface Action {
 const useActiveAppIdStore = create<State & Action>()(
   immer((set) => ({
     /* State */
-    activeAppId: homeAppMetadata.id,
+    activeAppId: stdAppsMetadata.id,
 
     /* Action */
     setActiveAppId: (appId) => set((state) => void (state.activeAppId = appId)),
