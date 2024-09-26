@@ -3,8 +3,8 @@ package services
 import (
 	"context"
 
-	"github.com/nihi-lo/my-portal/services/gakusimservice"
-	"github.com/nihi-lo/my-portal/services/portalservice"
+	"github.com/nihi-lo/niku-portal/services/gakusimservice"
+	"github.com/nihi-lo/niku-portal/services/portalservice"
 )
 
 type Service interface {

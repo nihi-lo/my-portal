@@ -3,7 +3,7 @@ package gakusimservice
 import (
 	"context"
 
-	"github.com/nihi-lo/my-portal/services/gakusimservice/registry"
+	"github.com/nihi-lo/niku-portal/services/gakusimservice/registry"
 )
 
 type Service struct {

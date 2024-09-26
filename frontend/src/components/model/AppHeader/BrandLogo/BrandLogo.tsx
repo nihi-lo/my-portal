@@ -1,4 +1,4 @@
-import { RiArmchairFill } from "react-icons/ri";
+import { TbMeat } from "react-icons/tb";
 
 import { HStack } from "@/components/ui";
 
@@ -12,9 +12,9 @@ const BrandLogo = (): JSX.Element => {
   return (
     <HStack align="center" px="sm" gap="xs">
       <div onDoubleClick={quitWindow}>
-        <RiArmchairFill className="size-6" />
+        <TbMeat className="size-6" />
       </div>
-      <p className="text-medium font-semibold text-content2-foreground">My Portal</p>
+      <p className="text-medium font-semibold text-content2-foreground">Niku Portal</p>
     </HStack>
   );
 };

@@ -154,7 +154,7 @@ func (s *Service) getSession(sessionToken string) (NextAuthSession, error) {
 		return session, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("User-Agent", "MyPortalClient/1.0.0")
+	req.Header.Set("User-Agent", "NikuPortalClient/1.0.0")
 	req.Header.Set("Cookie", "next-auth.session-token="+sessionToken+";")
 
 	client := &http.Client{}

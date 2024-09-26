@@ -1,8 +1,8 @@
 package registry
 
 import (
-	"github.com/nihi-lo/my-portal/services/gakusimservice/adapter/controller"
-	"github.com/nihi-lo/my-portal/services/gakusimservice/usecase/interactor"
+	"github.com/nihi-lo/niku-portal/services/gakusimservice/adapter/controller"
+	"github.com/nihi-lo/niku-portal/services/gakusimservice/usecase/interactor"
 )
 
 type Registry struct {

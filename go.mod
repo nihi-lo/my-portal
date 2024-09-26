@@ -1,4 +1,4 @@
-module github.com/nihi-lo/my-portal
+module github.com/nihi-lo/niku-portal
 
 go 1.22.4
 

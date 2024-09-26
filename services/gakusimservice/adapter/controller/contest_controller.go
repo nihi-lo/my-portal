@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/nihi-lo/my-portal/services/gakusimservice/domain/usecase"
+	"github.com/nihi-lo/niku-portal/services/gakusimservice/domain/usecase"
 )
 
 type ContestController struct {
