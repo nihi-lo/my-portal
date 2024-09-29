@@ -8,6 +8,7 @@ import {
   Input,
   Link,
 } from "@nextui-org/react";
+import { useMemo, useState } from "react";
 import {
   RiAddLine,
   RiIndeterminateCircleLine,
@@ -26,14 +27,28 @@ const ApplicationListSection = (): JSX.Element => {
     action: { addFavoriteApp, removeFavoriteApp },
   } = useApplicationListSection();
 
+  const [filterValue, setFilterValue] = useState<string>("");
+
+  const filteredListItems = useMemo(() => {
+    return listItems.filter((item) => item.title.toLowerCase().includes(filterValue.toLowerCase()));
+  }, [filterValue, listItems]);
+
   return (
     <Section
-      endContent={<Input isClearable placeholder="アプリを検索" startContent={<RiSearchLine />} />}
+      endContent={
+        <Input
+          isClearable
+          placeholder="アプリを検索"
+          value={filterValue}
+          startContent={<RiSearchLine />}
+          onValueChange={setFilterValue}
+        />
+      }
       headingAs="h1"
       title="アプリ一覧"
     >
       <ul className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
-        {listItems.map((item) => (
+        {filteredListItems.map((item) => (
           <li key={item.key} className="w-full">
             <HStack align="center" justify="between" gap="sm" className="min-h-20">
               <Link href={item.href} className="size-full">
