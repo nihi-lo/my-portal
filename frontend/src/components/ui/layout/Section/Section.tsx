@@ -19,14 +19,14 @@ const Section = (props: Props): JSX.Element => {
 
   return (
     <section className={base()} {...otherProps}>
-      <HStack align="center" justify="between" gap="md">
-        <Heading as={headingAs} className="truncate text-xl font-bold">
+      <HStack align="center" justify="between" gap="md" className="h-8">
+        <Heading as={headingAs} className="truncate text-2xl font-bold">
           {title}
         </Heading>
         <div>{endContent}</div>
       </HStack>
       <Divider className="mt-2" />
-      <div className="mt-4">{children}</div>
+      <div className="mt-2">{children}</div>
     </section>
   );
 };
