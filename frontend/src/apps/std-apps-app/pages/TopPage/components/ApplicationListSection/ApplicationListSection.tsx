@@ -22,7 +22,7 @@ import { useApplicationListSection } from "./ApplicationListSection.hooks";
 
 const ApplicationListSection = (): JSX.Element => {
   const {
-    state: { applicationList },
+    state: { listItems },
     action: { addFavoriteApp, removeFavoriteApp },
   } = useApplicationListSection();
 
@@ -33,18 +33,18 @@ const ApplicationListSection = (): JSX.Element => {
       title="アプリ一覧"
     >
       <ul className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
-        {applicationList.map((app) => (
-          <li key={app.key} className="w-full">
+        {listItems.map((item) => (
+          <li key={item.key} className="w-full">
             <HStack align="center" justify="between" gap="sm" className="min-h-20">
-              <Link href={`/apps/${app.id}`} className="size-full">
+              <Link href={item.href} className="size-full">
                 <HStack align="center" gap="sm">
                   <div className="flex-none overflow-hidden rounded-large">
-                    <app.Icon />
+                    <item.Icon />
                   </div>
                   <div>
-                    <span className="line-clamp-1 font-semibold text-foreground">{app.title}</span>
+                    <span className="line-clamp-1 font-semibold text-foreground">{item.title}</span>
                     <span className="line-clamp-2 max-w-md text-small text-default-400">
-                      {app.description}
+                      {item.description}
                     </span>
                   </div>
                 </HStack>
@@ -60,25 +60,25 @@ const ApplicationListSection = (): JSX.Element => {
                   <DropdownItem
                     key="new"
                     showDivider
-                    endContent={<RiInformation2Line className="size-5" />}
+                    startContent={<RiInformation2Line className="size-5" />}
                   >
                     このアプリについて
                   </DropdownItem>
-                  {app.isAlreadyFavorited ? (
+                  {item.isAlreadyFavorited ? (
                     <DropdownItem
                       key="remove"
                       className="text-danger"
                       color="danger"
-                      endContent={<RiIndeterminateCircleLine className="size-5" />}
-                      onClick={() => removeFavoriteApp(app.id)}
+                      startContent={<RiIndeterminateCircleLine className="size-5" />}
+                      onClick={() => removeFavoriteApp(item.appId)}
                     >
                       サイドバーから削除
                     </DropdownItem>
                   ) : (
                     <DropdownItem
                       key="add"
-                      endContent={<RiAddLine className="size-5" />}
-                      onClick={() => addFavoriteApp(app.id)}
+                      startContent={<RiAddLine className="size-5" />}
+                      onClick={() => addFavoriteApp(item.appId)}
                     >
                       サイドバーへ追加
                     </DropdownItem>

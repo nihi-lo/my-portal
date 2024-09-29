@@ -6,10 +6,10 @@ import { useSubAppStore } from "@/stores/useSubAppStore";
 import { type SubAppID } from "@/types/subAppID";
 import { type ContainerHook } from "@/utils/containerHook";
 
-import { type Application } from "./ApplicationListSection.types";
+import { type ListItem } from "./ApplicationListSection.types";
 
 interface State {
-  applicationList: Application[];
+  listItems: ListItem[];
 }
 
 interface Action {
@@ -23,11 +23,11 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
   const addFavoriteAppId = useFavoriteAppOrderStore((state) => state.addFavoriteAppId);
   const removeFavoriteAppId = useFavoriteAppOrderStore((state) => state.removeFavoriteAppId);
 
-  const [applicationList, setApplicationList] = useState<Application[]>([]);
+  const [listItems, setListItems] = useState<ListItem[]>([]);
 
   useEffect(() => {
-    setApplicationList(
-      subAppList.reduce<Application[]>((acc, app) => {
+    setListItems(
+      subAppList.reduce<ListItem[]>((acc, app) => {
         if (app.metadata.id === stdAppsMetadata.id) {
           return acc;
         }
@@ -36,7 +36,8 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
           ...acc,
           {
             key: app.metadata.id,
-            id: app.metadata.id,
+            appId: app.metadata.id,
+            href: `/apps/${app.metadata.id}`,
             Icon: app.metadata.Icon,
             title: app.metadata.title,
             description: app.metadata.description,
@@ -49,7 +50,7 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
 
   return {
     state: {
-      applicationList,
+      listItems,
     },
     action: {
       addFavoriteApp: addFavoriteAppId,
