@@ -2,13 +2,16 @@ import { Container } from "@/components/ui";
 
 import { MatchResultSection } from "./components/MatchResultSection";
 import { UnitFormationSection } from "./components/UnitFormationSection";
+import { TopPageUseCaseProvider } from "./contexts/TopPageUseCaseContext";
 
 const TopPage = (): JSX.Element => {
   return (
-    <Container as="main">
-      <UnitFormationSection />
-      <MatchResultSection />
-    </Container>
+    <TopPageUseCaseProvider>
+      <Container as="main">
+        <UnitFormationSection />
+        <MatchResultSection />
+      </Container>
+    </TopPageUseCaseProvider>
   );
 };
 
