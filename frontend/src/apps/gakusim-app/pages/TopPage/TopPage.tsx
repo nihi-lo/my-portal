@@ -1,8 +1,8 @@
 import { Button, Card, CardBody, CardHeader, Divider, Image } from "@nextui-org/react";
 
-import { assets } from "@/apps/gakusim-app/assets";
 import { Container, HStack, Section, VStack } from "@/components/ui";
 
+import { assets } from "./assets";
 import { ContestSimulateButton } from "./components/ContestSimulateButton";
 import { PlanDropdown } from "./components/PlanDropdown";
 
