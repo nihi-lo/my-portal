@@ -1,4 +1,4 @@
-import { useContestResultStore } from "@/apps/gakusim-app/stores/contestResultStore";
+import { useContestResultStore } from "@/apps/gakusim-app/pages/TopPage/stores/contestResultStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
 import { type ContestSimulateButtonVariantProps } from "./ContestSimulateButton.variants";

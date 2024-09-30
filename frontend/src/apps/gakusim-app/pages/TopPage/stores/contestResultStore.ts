@@ -1,9 +1,8 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
+// eslint-disable-next-line strict-dependencies/strict-dependencies
 import { SimulateContestAsync } from "@wailsjs/go/gakusimservice/Service";
-
-import { type SimulateContestResponse } from "@/apps/gakusim-app/types/simulateContest";
 
 interface State {
   isLoading: boolean;
@@ -22,8 +21,14 @@ const useContestResultStore = create<State & Action>()(
     SimulateContestAsync: async () => {
       set((state) => void (state.isLoading = true));
       try {
+        interface Response {
+          id: string;
+          name: string;
+          email: string;
+        }
+
         const result = await SimulateContestAsync();
-        const res = JSON.parse(result) as SimulateContestResponse;
+        const res = JSON.parse(result) as Response;
         console.log(res);
       } finally {
         set((state) => void (state.isLoading = false));
