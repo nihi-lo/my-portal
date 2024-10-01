@@ -1,5 +1,6 @@
 import {
   Button,
+  Chip,
   Divider,
   Dropdown,
   DropdownItem,
@@ -8,7 +9,7 @@ import {
   Input,
   Link,
 } from "@nextui-org/react";
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   RiAddLine,
   RiIndeterminateCircleLine,
@@ -27,21 +28,61 @@ const ApplicationListSection = (): JSX.Element => {
     action: { addFavoriteApp, removeFavoriteApp },
   } = useApplicationListSection();
 
-  const [filterValue, setFilterValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [filteredListItems, setFilteredListItems] = useState(listItems);
+  const [isComposing, setIsComposing] = useState<boolean>(false);
 
-  const filteredListItems = useMemo(() => {
-    return listItems.filter((item) => item.title.toLowerCase().includes(filterValue.toLowerCase()));
-  }, [filterValue, listItems]);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const searchApplication = useCallback((): void => {
+    const toHiragana = (value: string): string => {
+      return value.replace(/[\u30a1-\u30f6]/g, (substring: string): string => {
+        const hiraganaCharCode: number = substring.charCodeAt(0) - 0x60;
+        return String.fromCharCode(hiraganaCharCode);
+      });
+    };
+
+    const search = inputRef.current?.value;
+    if (search === undefined) {
+      return;
+    }
+
+    if (search === "") {
+      setFilteredListItems(listItems);
+      return;
+    }
+
+    setFilteredListItems(
+      listItems.filter((item) =>
+        toHiragana(item.title).toLowerCase().includes(toHiragana(search).toLowerCase()),
+      ),
+    );
+  }, [listItems]);
+
+  useEffect(() => {
+    searchApplication();
+  }, [searchApplication]);
 
   return (
     <Section
       endContent={
         <Input
-          isClearable
+          ref={inputRef}
+          endContent={
+            searchValue !== "" && (
+              <Chip as={Button} size="sm" radius="sm" variant="faded" onClick={searchApplication}>
+                Enterで検索
+              </Chip>
+            )
+          }
           placeholder="アプリを検索"
-          value={filterValue}
           startContent={<RiSearchLine />}
-          onValueChange={setFilterValue}
+          value={searchValue}
+          onCompositionEnd={() => setIsComposing(false)}
+          onCompositionStart={() => setIsComposing(true)}
+          onKeyDown={(e) => e.key === "Enter" && !isComposing && searchApplication()}
+          onValueChange={setSearchValue}
+          className="w-60"
         />
       }
       headingAs="h1"
