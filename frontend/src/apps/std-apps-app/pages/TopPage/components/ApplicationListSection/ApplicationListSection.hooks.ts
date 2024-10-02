@@ -10,6 +10,7 @@ import { type ListItem } from "./ApplicationListSection.types";
 
 interface State {
   listItems: ListItem[];
+  searchResultMessage: string;
 }
 
 interface Action {
@@ -64,9 +65,17 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
     [favoriteApps, latestSearchValue, subAppList],
   );
 
+  const searchResultMessage = useMemo(() => {
+    if (latestSearchValue === undefined || latestSearchValue === "") {
+      return `全アプリの表示: ${listItems.length}件`;
+    }
+    return `"${latestSearchValue}"の検索結果: ${listItems.length}件`;
+  }, [latestSearchValue, listItems]);
+
   return {
     state: {
       listItems,
+      searchResultMessage,
     },
     action: {
       addFavoriteApp: addFavoriteAppId,

@@ -21,7 +21,7 @@ import { SearchInput } from "./SearchInput";
 
 const ApplicationListSection = (): JSX.Element => {
   const {
-    state: { listItems },
+    state: { listItems, searchResultMessage },
     action: { addFavoriteApp, removeFavoriteApp, searchApplication },
   } = useApplicationListSection();
 
@@ -37,6 +37,8 @@ const ApplicationListSection = (): JSX.Element => {
       headingAs="h1"
       title="アプリ一覧"
     >
+      <p className="text-right text-small text-default-400">{searchResultMessage}</p>
+
       <ul className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
         {listItems.map((item) => (
           <li key={item.key} className="w-full">
