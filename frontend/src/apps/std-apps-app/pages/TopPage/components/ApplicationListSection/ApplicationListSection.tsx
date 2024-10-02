@@ -1,26 +1,24 @@
 import {
   Button,
-  Chip,
   Divider,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Input,
   Link,
 } from "@nextui-org/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   RiAddLine,
   RiIndeterminateCircleLine,
   RiInformation2Line,
   RiMoreLine,
-  RiSearchLine,
 } from "react-icons/ri";
 
 import { Section, HStack } from "@/components/ui";
 
 import { useApplicationListSection } from "./ApplicationListSection.hooks";
+import { SearchInput } from "./SearchInput";
 
 const ApplicationListSection = (): JSX.Element => {
   const {
@@ -28,61 +26,39 @@ const ApplicationListSection = (): JSX.Element => {
     action: { addFavoriteApp, removeFavoriteApp },
   } = useApplicationListSection();
 
-  const [searchValue, setSearchValue] = useState<string>("");
   const [filteredListItems, setFilteredListItems] = useState(listItems);
-  const [isComposing, setIsComposing] = useState<boolean>(false);
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const handleSearch = useCallback(
+    (searchValue: string): void => {
+      const toHiragana = (value: string): string => {
+        return value.replace(/[\u30a1-\u30f6]/g, (substring: string): string => {
+          const hiraganaCharCode: number = substring.charCodeAt(0) - 0x60;
+          return String.fromCharCode(hiraganaCharCode);
+        });
+      };
 
-  const searchApplication = useCallback((): void => {
-    const toHiragana = (value: string): string => {
-      return value.replace(/[\u30a1-\u30f6]/g, (substring: string): string => {
-        const hiraganaCharCode: number = substring.charCodeAt(0) - 0x60;
-        return String.fromCharCode(hiraganaCharCode);
-      });
-    };
-
-    const search = inputRef.current?.value;
-    if (search === undefined) {
-      return;
-    }
-
-    if (search === "") {
-      setFilteredListItems(listItems);
-      return;
-    }
-
-    setFilteredListItems(
-      listItems.filter((item) =>
-        toHiragana(item.title).toLowerCase().includes(toHiragana(search).toLowerCase()),
-      ),
-    );
-  }, [listItems]);
+      setFilteredListItems(
+        searchValue === ""
+          ? listItems
+          : listItems.filter((item) =>
+              toHiragana(item.title).toLowerCase().includes(toHiragana(searchValue).toLowerCase()),
+            ),
+      );
+    },
+    [listItems],
+  );
 
   useEffect(() => {
-    searchApplication();
-  }, [searchApplication]);
+    handleSearch("");
+  }, [handleSearch]);
 
   return (
     <Section
       endContent={
-        <Input
-          ref={inputRef}
-          endContent={
-            searchValue !== "" && (
-              <Chip as={Button} size="sm" radius="sm" variant="faded" onClick={searchApplication}>
-                Enterで検索
-              </Chip>
-            )
-          }
+        <SearchInput
           placeholder="アプリを検索"
-          startContent={<RiSearchLine />}
-          value={searchValue}
-          onCompositionEnd={() => setIsComposing(false)}
-          onCompositionStart={() => setIsComposing(true)}
-          onKeyDown={(e) => e.key === "Enter" && !isComposing && searchApplication()}
-          onValueChange={setSearchValue}
-          className="w-60"
+          onSearch={handleSearch}
+          className="w-72 md:w-80 lg:w-96"
         />
       }
       headingAs="h1"
