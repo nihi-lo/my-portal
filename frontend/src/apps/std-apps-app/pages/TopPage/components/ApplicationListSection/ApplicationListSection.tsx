@@ -7,7 +7,6 @@ import {
   DropdownTrigger,
   Link,
 } from "@nextui-org/react";
-import { useCallback, useEffect, useState } from "react";
 import {
   RiAddLine,
   RiIndeterminateCircleLine,
@@ -23,41 +22,15 @@ import { SearchInput } from "./SearchInput";
 const ApplicationListSection = (): JSX.Element => {
   const {
     state: { listItems },
-    action: { addFavoriteApp, removeFavoriteApp },
+    action: { addFavoriteApp, removeFavoriteApp, searchApplication },
   } = useApplicationListSection();
-
-  const [filteredListItems, setFilteredListItems] = useState(listItems);
-
-  const handleSearch = useCallback(
-    (searchValue: string): void => {
-      const toHiragana = (value: string): string => {
-        return value.replace(/[\u30a1-\u30f6]/g, (substring: string): string => {
-          const hiraganaCharCode: number = substring.charCodeAt(0) - 0x60;
-          return String.fromCharCode(hiraganaCharCode);
-        });
-      };
-
-      setFilteredListItems(
-        searchValue === ""
-          ? listItems
-          : listItems.filter((item) =>
-              toHiragana(item.title).toLowerCase().includes(toHiragana(searchValue).toLowerCase()),
-            ),
-      );
-    },
-    [listItems],
-  );
-
-  useEffect(() => {
-    handleSearch("");
-  }, [handleSearch]);
 
   return (
     <Section
       endContent={
         <SearchInput
           placeholder="アプリを検索"
-          onSearch={handleSearch}
+          onSearch={searchApplication}
           className="w-72 md:w-80 lg:w-96"
         />
       }
@@ -65,7 +38,7 @@ const ApplicationListSection = (): JSX.Element => {
       title="アプリ一覧"
     >
       <ul className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
-        {filteredListItems.map((item) => (
+        {listItems.map((item) => (
           <li key={item.key} className="w-full">
             <HStack align="center" justify="between" gap="sm" className="min-h-20">
               <Link href={item.href} className="size-full">
