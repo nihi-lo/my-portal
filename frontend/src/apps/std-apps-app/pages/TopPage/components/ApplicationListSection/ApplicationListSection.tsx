@@ -11,7 +11,7 @@ import {
   RiAddLine,
   RiIndeterminateCircleLine,
   RiInformation2Line,
-  RiMoreLine,
+  RiMore2Fill,
 } from "react-icons/ri";
 
 import { Section, HStack } from "@/components/ui";
@@ -59,8 +59,8 @@ const ApplicationListSection = (): JSX.Element => {
 
               <Dropdown disableAnimation>
                 <DropdownTrigger>
-                  <Button isIconOnly size="sm" variant="flat">
-                    <RiMoreLine className="size-5" />
+                  <Button isIconOnly radius="full" size="sm" variant="flat">
+                    <RiMore2Fill className="size-5" />
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu aria-label="アプリへの操作" variant="flat">
