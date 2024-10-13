@@ -4,7 +4,7 @@ import { WindowToggleMaximise } from "@wailsjs/runtime/runtime";
 
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { useOS } from "@/hooks/useOS";
-import { useActiveAppStore } from "@/stores/useActiveAppStore";
+import { useActiveAppStore } from "@/stores/activeAppStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {

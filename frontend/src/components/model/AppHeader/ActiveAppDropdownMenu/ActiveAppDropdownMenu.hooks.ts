@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
-import { useActiveAppStore } from "@/stores/useActiveAppStore";
-import { useFavoriteAppOrderStore } from "@/stores/useFavoriteAppOrderStore";
+import { useActiveAppStore } from "@/stores/activeAppStore";
+import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {

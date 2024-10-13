@@ -14,8 +14,8 @@ import { useState } from "react";
 
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { VStack } from "@/components/ui";
-import { useActiveAppStore } from "@/stores/useActiveAppStore";
-import { useFavoriteAppOrderStore } from "@/stores/useFavoriteAppOrderStore";
+import { useActiveAppStore } from "@/stores/activeAppStore";
+import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
 import { type SubAppID } from "@/types/subAppID";
 
 import { SubAppOverlaySelectMenuItem } from "./SubAppOverlaySelectMenuItem";

@@ -6,9 +6,9 @@ import { EventsOn } from "@wailsjs/runtime/runtime";
 
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { subApps } from "@/apps/subApps";
-import { useActiveAppStore } from "@/stores/useActiveAppStore";
-import { useSessionStore } from "@/stores/useSessionStore";
-import { useSubAppStore } from "@/stores/useSubAppStore";
+import { useActiveAppStore } from "@/stores/activeAppStore";
+import { useSessionStore } from "@/stores/sessionStore";
+import { useSubAppStore } from "@/stores/subAppStore";
 import { type SubApp } from "@/types/subApp";
 import { type ContainerHook } from "@/utils/containerHook";
 

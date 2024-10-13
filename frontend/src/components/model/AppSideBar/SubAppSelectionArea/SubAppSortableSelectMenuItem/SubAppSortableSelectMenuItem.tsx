@@ -2,7 +2,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Link } from "@nextui-org/react";
 
-import { useSubAppStore } from "@/stores/useSubAppStore";
+import { useSubAppStore } from "@/stores/subAppStore";
 import { type SubAppID } from "@/types/subAppID";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";

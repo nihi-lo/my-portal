@@ -1,4 +1,4 @@
-import { useSubAppStore } from "@/stores/useSubAppStore";
+import { useSubAppStore } from "@/stores/subAppStore";
 import { type SubAppID } from "@/types/subAppID";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";

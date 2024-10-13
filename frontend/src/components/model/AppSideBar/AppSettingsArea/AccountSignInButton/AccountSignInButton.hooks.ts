@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useAuth } from "@/hooks/useAuth";
-import { useSessionStore } from "@/stores/useSessionStore";
+import { useSessionStore } from "@/stores/sessionStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
 import { type User } from "./AccountSignInButton.types";

@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
-import { useFavoriteAppOrderStore } from "@/stores/useFavoriteAppOrderStore";
-import { useSubAppStore } from "@/stores/useSubAppStore";
+import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
+import { useSubAppStore } from "@/stores/subAppStore";
 import { type SubAppID } from "@/types/subAppID";
 import { type ContainerHook } from "@/utils/containerHook";
 
