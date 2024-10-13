@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 
 import { WindowToggleMaximise } from "@wailsjs/runtime/runtime";
 
+import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { useOS } from "@/hooks/useOS";
 import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
 import { useSubAppStore } from "@/stores/useSubAppStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {
-  showBrandLogo: boolean | undefined;
-  showWindowControl: boolean | undefined;
+  showActiveAppDropdownMenu: boolean;
+  showBrandLogo: boolean;
+  showWindowControl: boolean;
   windowTitle: string;
 }
 
@@ -25,26 +27,21 @@ const useAppHeader: ContainerHook<State, Action> = () => {
     state: { os },
   } = useOS();
 
-  const [showBrandLogo, setShowBrandLogo] = useState<boolean>();
-  const [showWindowControl, setShowWindowControl] = useState<boolean>();
-  const [windowTitle, setWindowTitle] = useState<string>("");
-
-  useEffect(() => {
-    setShowBrandLogo(os === "windows");
-    setShowWindowControl(os === "windows");
-  }, [os]);
-
-  useEffect(() => {
-    const subApp = subAppList.find((app) => app.metadata.id === activeAppId);
-    if (subApp !== undefined) {
-      setWindowTitle(subApp.metadata.title);
-    } else {
-      setWindowTitle("");
-    }
-  }, [activeAppId, subAppList]);
+  const activeApp = useMemo(
+    () => subAppList.find((app) => app.metadata.id === activeAppId),
+    [activeAppId, subAppList],
+  );
+  const showActiveAppDropdownMenu = useMemo(
+    () => activeApp?.metadata.id !== stdAppsMetadata.id,
+    [activeApp],
+  );
+  const showBrandLogo = useMemo(() => os === "windows", [os]);
+  const showWindowControl = useMemo(() => os === "windows", [os]);
+  const windowTitle = useMemo(() => activeApp?.metadata.title ?? "", [activeApp?.metadata.title]);
 
   return {
     state: {
+      showActiveAppDropdownMenu,
       showBrandLogo,
       showWindowControl,
       windowTitle,
