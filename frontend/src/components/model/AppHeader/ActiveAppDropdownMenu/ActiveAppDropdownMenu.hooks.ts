@@ -15,14 +15,14 @@ interface Action {
 
 const useActiveAppDropdownMenu: ContainerHook<State, Action> = () => {
   const activeApp = useActiveAppStore((state) => state.activeApp);
-  const favoriteApps = useFavoriteAppOrderStore((state) => state.favoriteApps);
+  const favoriteAppOrder = useFavoriteAppOrderStore((state) => state.favoriteAppOrder);
 
   const addFavoriteAppId = useFavoriteAppOrderStore((state) => state.addFavoriteAppId);
   const removeFavoriteAppId = useFavoriteAppOrderStore((state) => state.removeFavoriteAppId);
 
   const isAlreadyFavorited = useMemo(
-    () => (activeApp ? favoriteApps.includes(activeApp.metadata.id) : false),
-    [activeApp, favoriteApps],
+    () => (activeApp ? favoriteAppOrder.includes(activeApp.metadata.id) : false),
+    [activeApp, favoriteAppOrder],
   );
 
   return {

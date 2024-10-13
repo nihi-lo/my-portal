@@ -8,7 +8,7 @@ interface State {
 }
 
 interface Action {
-  setSubAppList: (value: SubApp[]) => void;
+  updateSubAppList: (appList: SubApp[]) => void;
 }
 
 const useSubAppStore = create<State & Action>()(
@@ -17,7 +17,7 @@ const useSubAppStore = create<State & Action>()(
     subAppList: [],
 
     /* Action */
-    setSubAppList: (value) => set((state) => void (state.subAppList = value)),
+    updateSubAppList: (appList) => set((state) => void (state.subAppList = appList)),
   })),
 );
 

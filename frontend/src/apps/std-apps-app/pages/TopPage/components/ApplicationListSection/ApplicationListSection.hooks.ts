@@ -20,8 +20,9 @@ interface Action {
 }
 
 const useApplicationListSection: ContainerHook<State, Action> = () => {
-  const favoriteApps = useFavoriteAppOrderStore((state) => state.favoriteApps);
+  const favoriteAppOrder = useFavoriteAppOrderStore((state) => state.favoriteAppOrder);
   const subAppList = useSubAppStore((state) => state.subAppList);
+
   const addFavoriteAppId = useFavoriteAppOrderStore((state) => state.addFavoriteAppId);
   const removeFavoriteAppId = useFavoriteAppOrderStore((state) => state.removeFavoriteAppId);
 
@@ -50,7 +51,7 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
                     Icon: app.metadata.Icon,
                     title: app.metadata.title,
                     description: app.metadata.description,
-                    isAlreadyFavorited: favoriteApps.includes(app.metadata.id),
+                    isAlreadyFavorited: favoriteAppOrder.includes(app.metadata.id),
                   },
                 ],
           [],
@@ -62,7 +63,7 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
                 .toLowerCase()
                 .includes(toHiragana(latestSearchValue).toLowerCase()),
         ),
-    [favoriteApps, latestSearchValue, subAppList],
+    [favoriteAppOrder, latestSearchValue, subAppList],
   );
 
   const searchResultMessage = useMemo(() => {

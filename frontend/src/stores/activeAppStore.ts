@@ -10,7 +10,7 @@ interface State {
 }
 
 interface Action {
-  setActiveApp: (appId: SubAppID | undefined) => void;
+  updateActiveApp: (appId: SubAppID | undefined) => void;
 }
 
 const useActiveAppStore = create<State & Action>()(
@@ -19,7 +19,7 @@ const useActiveAppStore = create<State & Action>()(
     activeApp: undefined,
 
     /* Action */
-    setActiveApp: (appId) =>
+    updateActiveApp: (appId) =>
       set((state) => void (appId ? (state.activeApp = subApps.get(appId)) : undefined)),
   })),
 );

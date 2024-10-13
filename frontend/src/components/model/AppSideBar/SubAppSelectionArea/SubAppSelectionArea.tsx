@@ -23,29 +23,33 @@ import { SubAppSelectIcon } from "./SubAppSelectIcon";
 import { SubAppSortableSelectMenuItem } from "./SubAppSortableSelectMenuItem";
 
 const SubAppSelectionArea = (): JSX.Element => {
-  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 0 } }));
-
   const activeApp = useActiveAppStore((state) => state.activeApp);
-  const favoriteApps = useFavoriteAppOrderStore((state) => state.favoriteApps);
-  const setFavoriteApps = useFavoriteAppOrderStore((state) => state.setFavoriteApps);
+  const favoriteAppOrder = useFavoriteAppOrderStore((state) => state.favoriteAppOrder);
+
+  const updateFavoriteAppOrder = useFavoriteAppOrderStore((state) => state.updateFavoriteAppOrder);
+
+  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 0 } }));
 
   const [activeID, setActiveID] = useState<SubAppID | null>(null);
 
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event;
+
     setActiveID(active.id as SubAppID);
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
+
     if (over !== null && active.id !== over.id) {
       const newArray = arrayMove(
-        favoriteApps,
-        favoriteApps.indexOf(active.id as SubAppID),
-        favoriteApps.indexOf(over.id as SubAppID),
+        favoriteAppOrder,
+        favoriteAppOrder.indexOf(active.id as SubAppID),
+        favoriteAppOrder.indexOf(over.id as SubAppID),
       );
-      setFavoriteApps(newArray);
+      updateFavoriteAppOrder(newArray);
     }
+
     setActiveID(null);
   };
 
@@ -69,8 +73,8 @@ const SubAppSelectionArea = (): JSX.Element => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
-        <SortableContext items={favoriteApps} strategy={verticalListSortingStrategy}>
-          {favoriteApps.map((appId) => (
+        <SortableContext items={favoriteAppOrder} strategy={verticalListSortingStrategy}>
+          {favoriteAppOrder.map((appId) => (
             <SubAppSortableSelectMenuItem
               key={appId}
               isSelected={activeApp?.metadata.id === appId}

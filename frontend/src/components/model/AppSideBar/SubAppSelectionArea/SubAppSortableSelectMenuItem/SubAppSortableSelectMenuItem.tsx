@@ -15,6 +15,8 @@ interface Props {
 const SubAppSortableSelectMenuItem = (props: Props): JSX.Element => {
   const { isSelected = false, subAppID } = props;
 
+  const subAppList = useSubAppStore((store) => store.subAppList);
+
   const {
     attributes,
     isDragging,
@@ -24,8 +26,6 @@ const SubAppSortableSelectMenuItem = (props: Props): JSX.Element => {
     transform,
     transition,
   } = useSortable({ id: subAppID });
-
-  const subAppList = useSubAppStore((store) => store.subAppList);
 
   const app = subAppList.find((app) => app.metadata.id === subAppID);
   if (app === undefined) {

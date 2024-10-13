@@ -14,6 +14,7 @@ interface Action {
 
 const useContestSimulateButton: ContainerHook<State, Action> = () => {
   const isLoading = useContestResultStore((state) => state.isLoading);
+
   const SimulateContestAsync = useContestResultStore((state) => state.SimulateContestAsync);
 
   return {

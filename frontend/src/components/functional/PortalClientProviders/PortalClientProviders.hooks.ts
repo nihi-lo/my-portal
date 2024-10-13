@@ -17,19 +17,18 @@ type State = Record<string, never>;
 type Action = Record<string, never>;
 
 const usePortalClientProviders: ContainerHook<State, Action> = () => {
+  const updateActiveApp = useActiveAppStore((state) => state.updateActiveApp);
+  const updateSession = useSessionStore((state) => state.updateSession);
+  const updateSubAppList = useSubAppStore((state) => state.updateSubAppList);
+
   const topMatch = useMatch("/");
   const appsMatch = useMatch("/apps/:appId/*");
-
-  const setActiveApp = useActiveAppStore((state) => state.setActiveApp);
-  const updateSession = useSessionStore((state) => state.updateSession);
-
-  const setSubAppList = useSubAppStore((state) => state.setSubAppList);
 
   useEffect(() => {
     const subAppList: SubApp[] = [];
     subApps.forEach((app) => subAppList.push(app));
-    setSubAppList(subAppList);
-  }, [setSubAppList]);
+    updateSubAppList(subAppList);
+  }, [updateSubAppList]);
 
   useEffect(() => {
     void UpdateSessionAsync();
@@ -42,13 +41,13 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
   useEffect(() => {
     // 現在のURLから起動アプリを判別し、 ActiveAppId に設定する
     if (topMatch) {
-      setActiveApp(stdAppsMetadata.id);
+      updateActiveApp(stdAppsMetadata.id);
     } else if (appsMatch) {
-      setActiveApp(appsMatch.params.appId);
+      updateActiveApp(appsMatch.params.appId);
     } else {
-      setActiveApp(undefined);
+      updateActiveApp(undefined);
     }
-  }, [appsMatch, setActiveApp, topMatch]);
+  }, [appsMatch, topMatch, updateActiveApp]);
 
   return {
     state: {},

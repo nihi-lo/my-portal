@@ -5,37 +5,38 @@ import { immer } from "zustand/middleware/immer";
 import { type SubAppID } from "@/types/subAppID";
 
 interface State {
-  favoriteApps: SubAppID[];
+  favoriteAppOrder: SubAppID[];
 }
 
 interface Action {
-  setFavoriteApps: (by: SubAppID[]) => void;
   addFavoriteAppId: (newAppId: SubAppID) => void;
   removeFavoriteAppId: (removeAppId: SubAppID) => void;
+  updateFavoriteAppOrder: (appOrder: SubAppID[]) => void;
 }
 
 const useFavoriteAppOrderStore = create<State & Action>()(
   persist(
     immer((set) => ({
       /* State */
-      favoriteApps: [],
+      favoriteAppOrder: [],
 
       /* Action */
-      setFavoriteApps: (by) => set((state) => void (state.favoriteApps = by)),
       addFavoriteAppId: (newAppId) =>
         set((state) => {
-          if (state.favoriteApps.includes(newAppId)) {
+          if (state.favoriteAppOrder.includes(newAppId)) {
             return;
           }
-          state.favoriteApps.push(newAppId);
+          state.favoriteAppOrder.push(newAppId);
         }),
       removeFavoriteAppId: (removeAppId) =>
         set((state) => {
-          if (!state.favoriteApps.includes(removeAppId)) {
+          if (!state.favoriteAppOrder.includes(removeAppId)) {
             return;
           }
-          state.favoriteApps = state.favoriteApps.filter((appId) => appId !== removeAppId);
+          state.favoriteAppOrder = state.favoriteAppOrder.filter((appId) => appId !== removeAppId);
         }),
+      updateFavoriteAppOrder: (appOrder) =>
+        set((state) => void (state.favoriteAppOrder = appOrder)),
     })),
     {
       name: "portal-client.favorite-app-order",
