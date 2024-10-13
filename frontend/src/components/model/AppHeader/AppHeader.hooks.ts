@@ -31,7 +31,7 @@ const useAppHeader: ContainerHook<State, Action> = () => {
   );
   const showBrandLogo = useMemo(() => os === "windows", [os]);
   const showWindowControl = useMemo(() => os === "windows", [os]);
-  const windowTitle = useMemo(() => activeApp?.metadata.title ?? "", [activeApp?.metadata.title]);
+  const windowTitle = useMemo(() => (activeApp ? activeApp.metadata.title : ""), [activeApp]);
 
   return {
     state: {

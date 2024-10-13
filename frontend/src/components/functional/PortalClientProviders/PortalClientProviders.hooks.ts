@@ -25,21 +25,11 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
   const appsMatch = useMatch("/apps/:appId/*");
 
   useEffect(() => {
-    const subAppList: SubApp[] = [];
-    subApps.forEach((app) => subAppList.push(app));
-    updateSubAppList(subAppList);
-  }, [updateSubAppList]);
-
-  useEffect(() => {
     void UpdateSessionAsync();
   }, []);
 
   useEffect(() => {
-    EventsOn("portalservice.onSessionTokenUpdate", updateSession);
-  }, [updateSession]);
-
-  useEffect(() => {
-    // 現在のURLから起動アプリを判別し、 ActiveAppId に設定する
+    // 現在のURLからアクティブなアプリを判別し、 ActiveAppId に設定する
     if (topMatch) {
       updateActiveApp(stdAppsMetadata.id);
     } else if (appsMatch) {
@@ -48,6 +38,16 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
       updateActiveApp(undefined);
     }
   }, [appsMatch, topMatch, updateActiveApp]);
+
+  useEffect(() => {
+    EventsOn("portalservice.onSessionTokenUpdate", updateSession);
+  }, [updateSession]);
+
+  useEffect(() => {
+    const subAppList: SubApp[] = [];
+    subApps.forEach((app) => subAppList.push(app));
+    updateSubAppList(subAppList);
+  }, [updateSubAppList]);
 
   return {
     state: {},
