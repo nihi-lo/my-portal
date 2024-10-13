@@ -3,7 +3,6 @@ import { useMemo, useState } from "react";
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
 import { useSubAppStore } from "@/stores/subAppStore";
-import { type SubAppID } from "@/types/subAppID";
 import { type ContainerHook } from "@/utils/containerHook";
 
 import { type ListItem } from "./ApplicationListSection.types";
@@ -14,8 +13,6 @@ interface State {
 }
 
 interface Action {
-  addFavoriteApp: (addAppId: SubAppID) => void;
-  removeFavoriteApp: (removeAppId: SubAppID) => void;
   searchApplication: (searchValue: string) => void;
 }
 
@@ -46,12 +43,15 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
                   ...acc,
                   {
                     key: app.metadata.id,
-                    appId: app.metadata.id,
-                    href: `/apps/${app.metadata.id}`,
-                    Icon: app.metadata.Icon,
-                    title: app.metadata.title,
                     description: app.metadata.description,
-                    isAlreadyFavorited: favoriteAppOrder.includes(app.metadata.id),
+                    disabledDropdownItemKeys: favoriteAppOrder.includes(app.metadata.id)
+                      ? new Set(["add"])
+                      : new Set(["remove"]),
+                    iconContent: app.metadata.Icon(),
+                    subAppTopUrl: `/apps/${app.metadata.id}`,
+                    title: app.metadata.title,
+                    addFavoriteApp: () => addFavoriteAppId(app.metadata.id),
+                    removeFavoriteApp: () => removeFavoriteAppId(app.metadata.id),
                   },
                 ],
           [],
@@ -63,7 +63,7 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
                 .toLowerCase()
                 .includes(toHiragana(latestSearchValue).toLowerCase()),
         ),
-    [favoriteAppOrder, latestSearchValue, subAppList],
+    [addFavoriteAppId, favoriteAppOrder, latestSearchValue, removeFavoriteAppId, subAppList],
   );
 
   const searchResultMessage = useMemo(() => {
@@ -79,8 +79,6 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
       searchResultMessage,
     },
     action: {
-      addFavoriteApp: addFavoriteAppId,
-      removeFavoriteApp: removeFavoriteAppId,
       searchApplication: setLatestSearchValue,
     },
   };

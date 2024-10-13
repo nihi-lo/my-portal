@@ -1,11 +1,12 @@
 interface ListItem {
   key: React.Key;
-  appId: string;
-  href: string;
-  Icon: () => JSX.Element;
-  title: string;
   description: string;
-  isAlreadyFavorited: boolean;
+  disabledDropdownItemKeys: Iterable<string>;
+  iconContent: React.ReactNode;
+  subAppTopUrl: string;
+  title: string;
+  addFavoriteApp: () => void;
+  removeFavoriteApp: () => void;
 }
 
 export { type ListItem };

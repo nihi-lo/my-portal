@@ -18,13 +18,13 @@ const ActiveAppDropdownMenu = (): JSX.Element => {
     <Dropdown>
       <DropdownTrigger>
         <Button isIconOnly radius="full" variant="light" className="h-6 w-6 min-w-6">
-          <RiMore2Fill className="size-4" />
+          <RiMore2Fill className="text-small" />
         </Button>
       </DropdownTrigger>
       <DropdownMenu
         aria-label="アプリへの操作"
-        variant="flat"
         disabledKeys={disabledDropdownItemKeys}
+        variant="flat"
       >
         <DropdownItem
           key="new"

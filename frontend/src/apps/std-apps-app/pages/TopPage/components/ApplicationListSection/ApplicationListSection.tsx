@@ -22,7 +22,7 @@ import { SearchInput } from "./SearchInput";
 const ApplicationListSection = (): JSX.Element => {
   const {
     state: { listItems, searchResultMessage },
-    action: { addFavoriteApp, removeFavoriteApp, searchApplication },
+    action: { searchApplication },
   } = useApplicationListSection();
 
   return (
@@ -43,11 +43,9 @@ const ApplicationListSection = (): JSX.Element => {
         {listItems.map((item) => (
           <li key={item.key} className="w-full">
             <HStack align="center" justify="between" gap="sm" className="min-h-20">
-              <Link href={item.href} className="size-full">
+              <Link href={item.subAppTopUrl} className="size-full">
                 <HStack align="center" gap="sm">
-                  <div className="flex-none overflow-hidden rounded-large">
-                    <item.Icon />
-                  </div>
+                  <div className="flex-none overflow-hidden rounded-large">{item.iconContent}</div>
                   <div>
                     <span className="line-clamp-1 font-semibold text-foreground">{item.title}</span>
                     <span className="line-clamp-2 max-w-md text-small text-default-400">
@@ -57,39 +55,38 @@ const ApplicationListSection = (): JSX.Element => {
                 </HStack>
               </Link>
 
-              <Dropdown disableAnimation>
+              <Dropdown>
                 <DropdownTrigger>
                   <Button isIconOnly radius="full" size="sm" variant="flat">
-                    <RiMore2Fill className="size-5" />
+                    <RiMore2Fill className="text-medium" />
                   </Button>
                 </DropdownTrigger>
-                <DropdownMenu aria-label="アプリへの操作" variant="flat">
+                <DropdownMenu
+                  aria-label="アプリへの操作"
+                  disabledKeys={item.disabledDropdownItemKeys}
+                  variant="flat"
+                >
                   <DropdownItem
                     key="new"
                     showDivider
-                    startContent={<RiInformation2Line className="size-5" />}
+                    startContent={<RiInformation2Line className="text-small" />}
                   >
                     このアプリについて
                   </DropdownItem>
-                  {item.isAlreadyFavorited ? (
-                    <DropdownItem
-                      key="remove"
-                      className="text-danger"
-                      color="danger"
-                      startContent={<RiIndeterminateCircleLine className="size-5" />}
-                      onClick={() => removeFavoriteApp(item.appId)}
-                    >
-                      サイドバーから削除
-                    </DropdownItem>
-                  ) : (
-                    <DropdownItem
-                      key="add"
-                      startContent={<RiAddLine className="size-5" />}
-                      onClick={() => addFavoriteApp(item.appId)}
-                    >
-                      サイドバーへ追加
-                    </DropdownItem>
-                  )}
+                  <DropdownItem
+                    key="add"
+                    startContent={<RiAddLine className="text-small" />}
+                    onClick={item.addFavoriteApp}
+                  >
+                    サイドバーへ追加
+                  </DropdownItem>
+                  <DropdownItem
+                    key="remove"
+                    startContent={<RiIndeterminateCircleLine className="text-small" />}
+                    onClick={item.removeFavoriteApp}
+                  >
+                    サイドバーから削除
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </HStack>
