@@ -11,7 +11,7 @@ const NotFoundPage = (): JSX.Element => {
         <p className="text-2xl">404 Not Found</p>
       </HStack>
       <Link href="/" underline="always">
-        ホームへ
+        アプリ一覧へ
       </Link>
     </VStack>
   );
