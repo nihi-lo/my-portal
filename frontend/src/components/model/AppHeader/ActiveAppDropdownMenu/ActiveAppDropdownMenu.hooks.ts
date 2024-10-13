@@ -1,8 +1,7 @@
 import { useMemo } from "react";
 
-import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
+import { useActiveAppStore } from "@/stores/useActiveAppStore";
 import { useFavoriteAppOrderStore } from "@/stores/useFavoriteAppOrderStore";
-import { useSubAppStore } from "@/stores/useSubAppStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {
@@ -15,17 +14,12 @@ interface Action {
 }
 
 const useActiveAppDropdownMenu: ContainerHook<State, Action> = () => {
-  const activeAppId = useActiveAppIdStore((state) => state.activeAppId);
+  const activeApp = useActiveAppStore((state) => state.activeApp);
   const favoriteApps = useFavoriteAppOrderStore((state) => state.favoriteApps);
-  const subAppList = useSubAppStore((state) => state.subAppList);
 
   const addFavoriteAppId = useFavoriteAppOrderStore((state) => state.addFavoriteAppId);
   const removeFavoriteAppId = useFavoriteAppOrderStore((state) => state.removeFavoriteAppId);
 
-  const activeApp = useMemo(
-    () => subAppList.find((app) => app.metadata.id === activeAppId),
-    [activeAppId, subAppList],
-  );
   const isAlreadyFavorited = useMemo(
     () => (activeApp ? favoriteApps.includes(activeApp.metadata.id) : false),
     [activeApp, favoriteApps],

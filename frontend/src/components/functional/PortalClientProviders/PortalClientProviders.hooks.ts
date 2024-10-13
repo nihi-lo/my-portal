@@ -6,7 +6,7 @@ import { EventsOn } from "@wailsjs/runtime/runtime";
 
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { subApps } from "@/apps/subApps";
-import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
+import { useActiveAppStore } from "@/stores/useActiveAppStore";
 import { useSessionStore } from "@/stores/useSessionStore";
 import { useSubAppStore } from "@/stores/useSubAppStore";
 import { type SubApp } from "@/types/subApp";
@@ -20,7 +20,7 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
   const topMatch = useMatch("/");
   const appsMatch = useMatch("/apps/:appId/*");
 
-  const setActiveAppId = useActiveAppIdStore((state) => state.setActiveAppId);
+  const setActiveApp = useActiveAppStore((state) => state.setActiveApp);
   const updateSession = useSessionStore((state) => state.updateSession);
 
   const setSubAppList = useSubAppStore((state) => state.setSubAppList);
@@ -42,13 +42,13 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
   useEffect(() => {
     // 現在のURLから起動アプリを判別し、 ActiveAppId に設定する
     if (topMatch) {
-      setActiveAppId(stdAppsMetadata.id);
+      setActiveApp(stdAppsMetadata.id);
     } else if (appsMatch) {
-      setActiveAppId(appsMatch.params.appId);
+      setActiveApp(appsMatch.params.appId);
     } else {
-      setActiveAppId(undefined);
+      setActiveApp(undefined);
     }
-  }, [appsMatch, setActiveAppId, topMatch]);
+  }, [appsMatch, setActiveApp, topMatch]);
 
   return {
     state: {},

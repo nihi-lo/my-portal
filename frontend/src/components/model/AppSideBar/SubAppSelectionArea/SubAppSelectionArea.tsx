@@ -14,7 +14,7 @@ import { useState } from "react";
 
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { VStack } from "@/components/ui";
-import { useActiveAppIdStore } from "@/stores/useActiveAppIdStore";
+import { useActiveAppStore } from "@/stores/useActiveAppStore";
 import { useFavoriteAppOrderStore } from "@/stores/useFavoriteAppOrderStore";
 import { type SubAppID } from "@/types/subAppID";
 
@@ -25,7 +25,7 @@ import { SubAppSortableSelectMenuItem } from "./SubAppSortableSelectMenuItem";
 const SubAppSelectionArea = (): JSX.Element => {
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 0 } }));
 
-  const activeAppId = useActiveAppIdStore((state) => state.activeAppId);
+  const activeApp = useActiveAppStore((state) => state.activeApp);
   const favoriteApps = useFavoriteAppOrderStore((state) => state.favoriteApps);
   const setFavoriteApps = useFavoriteAppOrderStore((state) => state.setFavoriteApps);
 
@@ -52,7 +52,7 @@ const SubAppSelectionArea = (): JSX.Element => {
   return (
     <VStack align="center" py="sm" gap="sm">
       <SubAppSelectIcon
-        isSelected={activeAppId === stdAppsMetadata.id}
+        isSelected={activeApp?.metadata.id === stdAppsMetadata.id}
         appIconContent={
           <Link href={`/apps/${stdAppsMetadata.id}`}>
             <stdAppsMetadata.Icon />
@@ -73,7 +73,7 @@ const SubAppSelectionArea = (): JSX.Element => {
           {favoriteApps.map((appId) => (
             <SubAppSortableSelectMenuItem
               key={appId}
-              isSelected={activeAppId === appId}
+              isSelected={activeApp?.metadata.id === appId}
               subAppID={appId}
             />
           ))}
