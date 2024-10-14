@@ -10,7 +10,7 @@ import { useActiveAppStore } from "@/stores/activeAppStore";
 import { useSessionStore } from "@/stores/sessionStore";
 import { useSubAppStore } from "@/stores/subAppStore";
 import { type SubApp } from "@/types/subApp";
-import { type SubAppId } from "@/types/subAppIDTemp";
+import { type SubAppId } from "@/types/subAppId";
 import { type ContainerHook } from "@/utils/containerHook";
 
 type State = Record<string, never>;

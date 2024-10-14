@@ -1,5 +1,5 @@
 import { useSubAppStore } from "@/stores/subAppStore";
-import { type SubAppId } from "@/types/subAppIDTemp";
+import { type SubAppId } from "@/types/subAppId";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";
 

@@ -16,7 +16,7 @@ import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { VStack } from "@/components/ui";
 import { useActiveAppStore } from "@/stores/activeAppStore";
 import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
-import { type SubAppId } from "@/types/subAppIDTemp";
+import { type SubAppId } from "@/types/subAppId";
 
 import { SubAppOverlaySelectMenuItem } from "./SubAppOverlaySelectMenuItem";
 import { SubAppSelectIcon } from "./SubAppSelectIcon";

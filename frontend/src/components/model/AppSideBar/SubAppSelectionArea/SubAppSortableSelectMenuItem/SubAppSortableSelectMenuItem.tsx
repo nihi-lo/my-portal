@@ -3,7 +3,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { Link } from "@nextui-org/react";
 
 import { useSubAppStore } from "@/stores/subAppStore";
-import { type SubAppId } from "@/types/subAppIDTemp";
+import { type SubAppId } from "@/types/subAppId";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";
 
