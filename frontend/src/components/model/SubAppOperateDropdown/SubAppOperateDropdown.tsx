@@ -1,7 +1,7 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import { RiInformation2Line, RiAddLine, RiIndeterminateCircleLine } from "react-icons/ri";
 
-import { type SubAppId } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppIDTemp";
 
 import { useSubAppOperateDropdownProps } from "./SubAppOperateDropdown.hooks";
 

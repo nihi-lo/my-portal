@@ -2,7 +2,7 @@ import { metadata as gakusimAppMetadata, App as GakusimApp } from "@/apps/gakusi
 import { metadata as stdAppsAppMetadata, App as StdAppsApp } from "@/apps/std-apps-app";
 import { metadata as zzzbuildAppMetadata, App as ZzzbuildApp } from "@/apps/zzzbuild-app";
 import { type SubApp } from "@/types/subApp";
-import { type SubAppId } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppIDTemp";
 
 /* NOTE: 本変数の直接importは禁止します！！
  *

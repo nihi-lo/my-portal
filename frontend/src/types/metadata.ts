@@ -1,4 +1,4 @@
-import { type SubAppId } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppIDTemp";
 import { type BrandType } from "@/utils/brandType";
 
 type Metadata = BrandType<

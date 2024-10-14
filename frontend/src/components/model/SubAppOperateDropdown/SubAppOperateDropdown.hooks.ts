@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
-import { type SubAppId } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppIDTemp";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {

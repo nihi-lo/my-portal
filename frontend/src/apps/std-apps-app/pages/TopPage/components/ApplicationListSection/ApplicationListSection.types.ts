@@ -1,4 +1,4 @@
-import { type SubAppId } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppIDTemp";
 
 interface ListItem {
   key: React.Key;

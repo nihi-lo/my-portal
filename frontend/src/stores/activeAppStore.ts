@@ -3,7 +3,7 @@ import { immer } from "zustand/middleware/immer";
 
 import { subApps } from "@/apps/subApps";
 import { type SubApp } from "@/types/subApp";
-import { type SubAppId } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppIDTemp";
 
 interface State {
   activeApp: SubApp | undefined;

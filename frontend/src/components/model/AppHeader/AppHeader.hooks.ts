@@ -6,7 +6,7 @@ import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { useOS } from "@/hooks/useOS";
 import { useActiveAppStore } from "@/stores/activeAppStore";
 import { OS } from "@/types/enum/os";
-import { type SubAppId } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppIDTemp";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {
