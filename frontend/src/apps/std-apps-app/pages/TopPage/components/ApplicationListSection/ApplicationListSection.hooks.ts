@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
-import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
 import { useSubAppStore } from "@/stores/subAppStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
@@ -17,11 +16,7 @@ interface Action {
 }
 
 const useApplicationListSection: ContainerHook<State, Action> = () => {
-  const favoriteAppOrder = useFavoriteAppOrderStore((state) => state.favoriteAppOrder);
   const subAppList = useSubAppStore((state) => state.subAppList);
-
-  const addFavoriteAppId = useFavoriteAppOrderStore((state) => state.addFavoriteAppId);
-  const removeFavoriteAppId = useFavoriteAppOrderStore((state) => state.removeFavoriteAppId);
 
   const [latestSearchValue, setLatestSearchValue] = useState<string | undefined>(undefined);
 
@@ -43,15 +38,11 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
                   ...acc,
                   {
                     key: app.metadata.id,
+                    appId: app.metadata.id,
                     description: app.metadata.description,
-                    disabledDropdownItemKeys: favoriteAppOrder.includes(app.metadata.id)
-                      ? new Set(["add"])
-                      : new Set(["remove"]),
                     iconContent: app.metadata.Icon(),
                     subAppTopUrl: `/apps/${app.metadata.id}`,
                     title: app.metadata.title,
-                    addFavoriteApp: () => addFavoriteAppId(app.metadata.id),
-                    removeFavoriteApp: () => removeFavoriteAppId(app.metadata.id),
                   },
                 ],
           [],
@@ -63,7 +54,7 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
                 .toLowerCase()
                 .includes(toHiragana(latestSearchValue).toLowerCase()),
         ),
-    [addFavoriteAppId, favoriteAppOrder, latestSearchValue, removeFavoriteAppId, subAppList],
+    [latestSearchValue, subAppList],
   );
 
   const searchResultMessage = useMemo(() => {

@@ -1,19 +1,7 @@
-import {
-  Button,
-  Divider,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Link,
-} from "@nextui-org/react";
-import {
-  RiAddLine,
-  RiIndeterminateCircleLine,
-  RiInformation2Line,
-  RiMore2Fill,
-} from "react-icons/ri";
+import { Button, Divider, Link } from "@nextui-org/react";
+import { RiMore2Fill } from "react-icons/ri";
 
+import { SubAppOperateDropdown } from "@/components/model/SubAppOperateDropdown";
 import { Section, HStack } from "@/components/ui";
 
 import { useApplicationListSection } from "./ApplicationListSection.hooks";
@@ -55,40 +43,14 @@ const ApplicationListSection = (): JSX.Element => {
                 </HStack>
               </Link>
 
-              <Dropdown>
-                <DropdownTrigger>
+              <SubAppOperateDropdown
+                appId={item.appId}
+                triggerContent={
                   <Button isIconOnly radius="full" size="sm" variant="flat">
                     <RiMore2Fill className="text-medium" />
                   </Button>
-                </DropdownTrigger>
-                <DropdownMenu
-                  aria-label="アプリへの操作"
-                  disabledKeys={item.disabledDropdownItemKeys}
-                  variant="flat"
-                >
-                  <DropdownItem
-                    key="new"
-                    showDivider
-                    startContent={<RiInformation2Line className="text-small" />}
-                  >
-                    このアプリについて
-                  </DropdownItem>
-                  <DropdownItem
-                    key="add"
-                    startContent={<RiAddLine className="text-small" />}
-                    onClick={item.addFavoriteApp}
-                  >
-                    サイドバーへ追加
-                  </DropdownItem>
-                  <DropdownItem
-                    key="remove"
-                    startContent={<RiIndeterminateCircleLine className="text-small" />}
-                    onClick={item.removeFavoriteApp}
-                  >
-                    サイドバーから削除
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
+                }
+              />
             </HStack>
             <Divider />
           </li>

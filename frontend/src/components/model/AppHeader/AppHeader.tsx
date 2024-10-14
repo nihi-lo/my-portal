@@ -1,8 +1,9 @@
-import { Divider } from "@nextui-org/react";
+import { Button, Divider } from "@nextui-org/react";
+import { RiMore2Fill } from "react-icons/ri";
 
+import { SubAppOperateDropdown } from "@/components/model/SubAppOperateDropdown";
 import { HStack } from "@/components/ui";
 
-import { ActiveAppDropdownMenu } from "./ActiveAppDropdownMenu";
 import { useAppHeader } from "./AppHeader.hooks";
 import { BrandLogo } from "./BrandLogo";
 import { WindowControlButtonGroup } from "./WindowControlButtonGroup";
@@ -10,7 +11,13 @@ import { WindowNavigationButtonGroup } from "./WindowNavigationButtonGroup";
 
 const AppHeader = (): JSX.Element => {
   const {
-    state: { showActiveAppDropdownMenu, showBrandLogo, showWindowControl, windowTitle },
+    state: {
+      activeAppId,
+      showBrandLogo,
+      showSubAppOperateDropdown,
+      showWindowControl,
+      windowTitle,
+    },
     action: { toggleWindowMaximize },
   } = useAppHeader();
 
@@ -32,9 +39,18 @@ const AppHeader = (): JSX.Element => {
         onDoubleClick={toggleWindowMaximize}
         className="mx-40 h-9"
       >
-        {showActiveAppDropdownMenu && <div className="h-6 w-6 min-w-6" />}
+        {showSubAppOperateDropdown && <div className="h-6 w-6 min-w-6" />}
         <p className="truncate text-small font-semibold text-content2-foreground">{windowTitle}</p>
-        {showActiveAppDropdownMenu && <ActiveAppDropdownMenu />}
+        {showSubAppOperateDropdown && (
+          <SubAppOperateDropdown
+            appId={activeAppId}
+            triggerContent={
+              <Button isIconOnly radius="full" variant="light" className="h-6 w-6 min-w-6">
+                <RiMore2Fill className="text-small" />
+              </Button>
+            }
+          />
+        )}
       </HStack>
 
       <HStack align="center" justify="end" className="absolute right-0 top-0 h-9 w-40">

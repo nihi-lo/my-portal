@@ -1,33 +1,33 @@
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-import {
-  RiInformation2Line,
-  RiIndeterminateCircleLine,
-  RiAddLine,
-  RiMore2Fill,
-} from "react-icons/ri";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import { RiInformation2Line, RiAddLine, RiIndeterminateCircleLine } from "react-icons/ri";
 
-import { useActiveAppDropdownMenu } from "./ActiveAppDropdownMenu.hooks";
+import { type SubAppID } from "@/types/subAppID";
 
-const ActiveAppDropdownMenu = (): JSX.Element => {
+import { useSubAppOperateDropdownProps } from "./SubAppOperateDropdown.hooks";
+
+interface SubAppOperateDropdownProps {
+  appId: SubAppID | undefined;
+  triggerContent: React.ReactNode;
+}
+
+const SubAppOperateDropdown = (props: SubAppOperateDropdownProps): JSX.Element => {
+  const { appId, triggerContent } = props;
+
   const {
     state: { disabledDropdownItemKeys },
     action: { addFavoriteApp, removeFavoriteApp },
-  } = useActiveAppDropdownMenu();
+  } = useSubAppOperateDropdownProps({ appId });
 
   return (
     <Dropdown>
-      <DropdownTrigger>
-        <Button isIconOnly radius="full" variant="light" className="h-6 w-6 min-w-6">
-          <RiMore2Fill className="text-small" />
-        </Button>
-      </DropdownTrigger>
+      <DropdownTrigger>{triggerContent}</DropdownTrigger>
       <DropdownMenu
         aria-label="アプリへの操作"
         disabledKeys={disabledDropdownItemKeys}
         variant="flat"
       >
         <DropdownItem
-          key="new"
+          key="about"
           showDivider
           startContent={<RiInformation2Line className="text-small" />}
         >
@@ -52,4 +52,4 @@ const ActiveAppDropdownMenu = (): JSX.Element => {
   );
 };
 
-export { ActiveAppDropdownMenu };
+export { SubAppOperateDropdown };

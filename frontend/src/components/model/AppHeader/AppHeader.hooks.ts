@@ -5,11 +5,13 @@ import { WindowToggleMaximise } from "@wailsjs/runtime/runtime";
 import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
 import { useOS } from "@/hooks/useOS";
 import { useActiveAppStore } from "@/stores/activeAppStore";
+import { type SubAppID } from "@/types/subAppID";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {
-  showActiveAppDropdownMenu: boolean;
+  activeAppId: SubAppID | undefined;
   showBrandLogo: boolean;
+  showSubAppOperateDropdown: boolean;
   showWindowControl: boolean;
   windowTitle: string;
 }
@@ -25,7 +27,7 @@ const useAppHeader: ContainerHook<State, Action> = () => {
     state: { os },
   } = useOS();
 
-  const showActiveAppDropdownMenu = useMemo(
+  const showSubAppOperateDropdown = useMemo(
     () => activeApp?.metadata.id !== stdAppsMetadata.id,
     [activeApp],
   );
@@ -35,8 +37,9 @@ const useAppHeader: ContainerHook<State, Action> = () => {
 
   return {
     state: {
-      showActiveAppDropdownMenu,
+      activeAppId: activeApp?.metadata.id,
       showBrandLogo,
+      showSubAppOperateDropdown,
       showWindowControl,
       windowTitle,
     },
