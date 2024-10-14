@@ -7,12 +7,12 @@ import { type SubAppId } from "@/types/subAppId";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";
 
-interface Props {
+interface SubAppSortableSelectMenuItemProps {
   isSelected?: boolean;
   subAppId: SubAppId;
 }
 
-const SubAppSortableSelectMenuItem = (props: Props): JSX.Element => {
+const SubAppSortableSelectMenuItem = (props: SubAppSortableSelectMenuItemProps): JSX.Element => {
   const { isSelected = false, subAppId } = props;
 
   const subAppList = useSubAppStore((store) => store.subAppList);

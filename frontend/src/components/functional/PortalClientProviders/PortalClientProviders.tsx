@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 import { usePortalClientProviders } from "./PortalClientProviders.hooks";
 
-interface Props {
+interface PortalClientProvidersProps {
   children: React.ReactNode;
 }
 
-const PortalClientProviders = (props: Props): JSX.Element => {
+const PortalClientProviders = (props: PortalClientProvidersProps): JSX.Element => {
   const { children } = props;
 
   const _ = usePortalClientProviders();

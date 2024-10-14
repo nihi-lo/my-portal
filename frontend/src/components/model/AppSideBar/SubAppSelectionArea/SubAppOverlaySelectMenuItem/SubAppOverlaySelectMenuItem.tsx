@@ -3,11 +3,11 @@ import { type SubAppId } from "@/types/subAppId";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";
 
-interface Props {
+interface SubAppOverlaySelectMenuItemProps {
   subAppId: SubAppId;
 }
 
-const SubAppOverlaySelectMenuItem = (props: Props): JSX.Element => {
+const SubAppOverlaySelectMenuItem = (props: SubAppOverlaySelectMenuItemProps): JSX.Element => {
   const { subAppId } = props;
 
   const subAppList = useSubAppStore((state) => state.subAppList);

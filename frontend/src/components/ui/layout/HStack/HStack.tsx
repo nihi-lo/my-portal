@@ -2,13 +2,13 @@ import React from "react";
 
 import { type HStackVariantProps, hStackVariants } from "./HStack.variants";
 
-interface Props
+interface HStackProps
   extends Omit<React.ComponentPropsWithoutRef<"div" | "main">, "style">,
     HStackVariantProps {
   as?: "div" | "main";
 }
 
-const HStack = (props: Props): JSX.Element => {
+const HStack = (props: HStackProps): JSX.Element => {
   const {
     align,
     justify,

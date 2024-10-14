@@ -2,13 +2,13 @@ import React from "react";
 
 import { type VStackVariantProps, vStackVariants } from "./VStack.variants";
 
-interface Props
+interface VStackProps
   extends Omit<React.ComponentPropsWithoutRef<"aside" | "div" | "main">, "style">,
     VStackVariantProps {
   as?: "aside" | "div" | "main";
 }
 
-const VStack = (props: Props): JSX.Element => {
+const VStack = (props: VStackProps): JSX.Element => {
   const {
     align,
     justify,

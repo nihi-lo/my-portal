@@ -4,7 +4,7 @@ import { Heading, HStack } from "@/components/ui";
 
 import { type SectionVariantProps, sectionVariants } from "./Section.variants";
 
-interface Props
+interface SectionProps
   extends Omit<React.ComponentPropsWithoutRef<"section">, "className" | "style">,
     SectionVariantProps {
   endContent?: React.ReactNode;
@@ -12,7 +12,7 @@ interface Props
   title: string;
 }
 
-const Section = (props: Props): JSX.Element => {
+const Section = (props: SectionProps): JSX.Element => {
   const { endContent, headingAs, title, p, px, py, pt, grow, children, ...otherProps } = props;
 
   const { base } = sectionVariants({ p, px, py, pt, grow });

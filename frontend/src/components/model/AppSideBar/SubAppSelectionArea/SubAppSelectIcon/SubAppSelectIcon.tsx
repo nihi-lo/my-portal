@@ -7,13 +7,13 @@ import {
   subAppSelectIconVariants,
 } from "./SubAppSelectIcon.variants";
 
-interface Props extends SubAppSelectIconVariantProps {
+interface SubAppSelectIconProps extends SubAppSelectIconVariantProps {
   appIconContent: React.ReactNode;
   hideTooltip?: boolean;
   tooltipContent?: string;
 }
 
-const SubAppSelectIcon = (props: Props): JSX.Element => {
+const SubAppSelectIcon = (props: SubAppSelectIconProps): JSX.Element => {
   const {
     appIconContent,
     disableAnimation = false,

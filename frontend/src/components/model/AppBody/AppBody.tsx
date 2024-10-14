@@ -1,10 +1,10 @@
 import { type AppBodyVariantProps, appBodyVariants } from "./AppBody.variants";
 
-type Props = AppBodyVariantProps & {
+type AppBodyProps = AppBodyVariantProps & {
   children: React.ReactNode;
 };
 
-const AppBody = (props: Props): JSX.Element => {
+const AppBody = (props: AppBodyProps): JSX.Element => {
   const { children } = props;
 
   const { base, inner } = appBodyVariants();
