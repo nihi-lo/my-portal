@@ -1,5 +1,6 @@
 import { useOS } from "@/hooks/useOS";
 import { useWindow } from "@/hooks/useWindow";
+import { OS } from "@/types/enum/os";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {
@@ -18,7 +19,7 @@ const useRootLayout: ContainerHook<State, Action> = () => {
 
   return {
     state: {
-      showWindowBorder: os === "windows" && !isMaximised,
+      showWindowBorder: os === OS.Windows && !isMaximised,
     },
     action: {},
   };

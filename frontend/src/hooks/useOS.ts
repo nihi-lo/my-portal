@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 
 import { GetOSAsync } from "@wailsjs/go/portalservice/Service";
 
-import { type OS } from "@/types/os";
+import { OS } from "@/types/enum/os";
 import { type CustomHook } from "@/utils/customHook";
 
 interface State {
@@ -12,19 +12,19 @@ interface State {
 type Action = Record<string, never>;
 
 const useOS: CustomHook<State, Action> = () => {
-  const [os, setOS] = useState<OS>("undetermined");
+  const [os, setOS] = useState<OS>(OS.Undetermined);
 
   useLayoutEffect(() => {
     void GetOSAsync().then((os) => {
       switch (os) {
         case "windows":
-          setOS("windows");
+          setOS(OS.Windows);
           break;
         case "macos":
-          setOS("macos");
+          setOS(OS.Mac);
           break;
         default:
-          setOS("undetermined");
+          setOS(OS.Undetermined);
           break;
       }
     });
@@ -38,4 +38,4 @@ const useOS: CustomHook<State, Action> = () => {
   };
 };
 
-export { type OS, useOS };
+export { useOS };

@@ -44,7 +44,7 @@ const ApplicationListSection = (): JSX.Element => {
               </Link>
 
               <SubAppOperateDropdown
-                appId={item.appId}
+                subAppId={item.appId}
                 triggerContent={
                   <Button isIconOnly radius="full" size="sm" variant="flat">
                     <RiMore2Fill className="text-medium" />

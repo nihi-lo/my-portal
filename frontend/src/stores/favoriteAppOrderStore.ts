@@ -2,16 +2,16 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-import { type SubAppID } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppID";
 
 interface State {
-  favoriteAppOrder: SubAppID[];
+  favoriteAppOrder: SubAppId[];
 }
 
 interface Action {
-  addFavoriteAppId: (newAppId: SubAppID) => void;
-  removeFavoriteAppId: (removeAppId: SubAppID) => void;
-  updateFavoriteAppOrder: (appOrder: SubAppID[]) => void;
+  addFavoriteAppId: (newAppId: SubAppId) => void;
+  removeFavoriteAppId: (removeAppId: SubAppId) => void;
+  updateFavoriteAppOrder: (appOrder: SubAppId[]) => void;
 }
 
 const useFavoriteAppOrderStore = create<State & Action>()(

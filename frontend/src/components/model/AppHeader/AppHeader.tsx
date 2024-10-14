@@ -43,7 +43,7 @@ const AppHeader = (): JSX.Element => {
         <p className="truncate text-small font-semibold text-content2-foreground">{windowTitle}</p>
         {showSubAppOperateDropdown && (
           <SubAppOperateDropdown
-            appId={activeAppId}
+            subAppId={activeAppId}
             triggerContent={
               <Button isIconOnly radius="full" variant="light" className="h-6 w-6 min-w-6">
                 <RiMore2Fill className="text-small" />

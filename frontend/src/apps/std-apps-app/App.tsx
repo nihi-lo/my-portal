@@ -8,7 +8,7 @@ import { type Metadata } from "@/types/metadata";
 import { TopPage } from "./pages/TopPage";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const metadata: Metadata = {
+export const metadata = {
   id: "04528691-0050-faeb-1bb5-5abf060810f6",
   title: "アプリ一覧",
   description: "",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       <RiApps2Line className="size-8 text-content2-foreground" />
     </HStack>
   ),
-};
+} as Metadata;
 
 export const App = (): JSX.Element => {
   return (

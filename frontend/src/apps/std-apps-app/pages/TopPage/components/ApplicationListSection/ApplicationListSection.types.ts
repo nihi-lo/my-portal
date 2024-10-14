@@ -1,8 +1,8 @@
-import { type SubAppID } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppID";
 
 interface ListItem {
   key: React.Key;
-  appId: SubAppID;
+  appId: SubAppId;
   description: string;
   iconContent: React.ReactNode;
   subAppTopUrl: string;

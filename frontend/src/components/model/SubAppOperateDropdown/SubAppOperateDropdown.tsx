@@ -1,22 +1,22 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import { RiInformation2Line, RiAddLine, RiIndeterminateCircleLine } from "react-icons/ri";
 
-import { type SubAppID } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppID";
 
 import { useSubAppOperateDropdownProps } from "./SubAppOperateDropdown.hooks";
 
 interface SubAppOperateDropdownProps {
-  appId: SubAppID | undefined;
+  subAppId: SubAppId | undefined;
   triggerContent: React.ReactNode;
 }
 
 const SubAppOperateDropdown = (props: SubAppOperateDropdownProps): JSX.Element => {
-  const { appId, triggerContent } = props;
+  const { subAppId, triggerContent } = props;
 
   const {
     state: { disabledDropdownItemKeys },
     action: { addFavoriteApp, removeFavoriteApp },
-  } = useSubAppOperateDropdownProps({ appId });
+  } = useSubAppOperateDropdownProps({ subAppId });
 
   return (
     <Dropdown>

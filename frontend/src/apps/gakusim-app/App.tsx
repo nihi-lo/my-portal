@@ -8,7 +8,7 @@ import { assets } from "./assets";
 import { TopPage } from "./pages/TopPage";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const metadata: Metadata = {
+export const metadata = {
   id: "6876b3b6-307d-27ca-d845-6577357297c2",
   title: "学マス コンテストシミュ",
   description: "学園アイドルマスターのコンテストシミュレーター",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       width={48}
     />
   ),
-};
+} as Metadata;
 
 export const App = (): JSX.Element => {
   return (

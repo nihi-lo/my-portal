@@ -8,7 +8,7 @@ import { assets } from "./assets";
 import { TopPage } from "./pages/TopPage";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const metadata: Metadata = {
+export const metadata = {
   id: "c4db13c7-0be5-cc07-5de5-9843f757b8df",
   title: "ゼンゼロ ビルドツール",
   description: "エージェント毎に音動機とディスク管理",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       width={48}
     />
   ),
-};
+} as Metadata;
 
 export const App = (): JSX.Element => {
   return (

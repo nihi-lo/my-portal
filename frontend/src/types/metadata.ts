@@ -1,10 +1,14 @@
-import { type SubAppID } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppID";
+import { type BrandType } from "@/utils/brandType";
 
-interface Metadata {
-  id: SubAppID;
-  title: string;
-  description: string;
-  Icon: () => JSX.Element;
-}
+type Metadata = BrandType<
+  {
+    id: SubAppId;
+    title: string;
+    description: string;
+    Icon: () => JSX.Element;
+  },
+  "Metadata"
+>;
 
 export { type Metadata };

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useAuth } from "@/hooks/useAuth";
 import { useSessionStore } from "@/stores/sessionStore";
+import { SessionStatus } from "@/types/enum/sessionStatus";
 import { type ContainerHook } from "@/utils/containerHook";
 
 import { type User } from "./AccountSignInButton.types";
@@ -27,7 +28,7 @@ const useAccountSignInButton: ContainerHook<State, Action> = () => {
   const [user, setUser] = useState<User>({ name: "", image: "" });
 
   useEffect(() => {
-    if (sessionStatus !== "authenticated") {
+    if (sessionStatus !== SessionStatus.Authenticated) {
       setIsAuthenticated(false);
       return;
     }

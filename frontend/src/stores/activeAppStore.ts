@@ -3,14 +3,14 @@ import { immer } from "zustand/middleware/immer";
 
 import { subApps } from "@/apps/subApps";
 import { type SubApp } from "@/types/subApp";
-import { type SubAppID } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppID";
 
 interface State {
   activeApp: SubApp | undefined;
 }
 
 interface Action {
-  updateActiveApp: (appId: SubAppID | undefined) => void;
+  updateActiveApp: (appId: SubAppId | undefined) => void;
 }
 
 const useActiveAppStore = create<State & Action>()(

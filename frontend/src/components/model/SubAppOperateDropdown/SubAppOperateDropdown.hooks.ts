@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
-import { type SubAppID } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppID";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {
@@ -14,11 +14,11 @@ interface Action {
 }
 
 interface Argument {
-  appId: SubAppID | undefined;
+  subAppId: SubAppId | undefined;
 }
 
 const useSubAppOperateDropdownProps: ContainerHook<State, Action, Argument> = (args) => {
-  const { appId } = args;
+  const { subAppId } = args;
 
   const favoriteAppOrder = useFavoriteAppOrderStore((state) => state.favoriteAppOrder);
 
@@ -26,20 +26,20 @@ const useSubAppOperateDropdownProps: ContainerHook<State, Action, Argument> = (a
   const removeFavoriteAppId = useFavoriteAppOrderStore((state) => state.removeFavoriteAppId);
 
   const disabledDropdownItemKeys = useMemo(() => {
-    if (appId === undefined) {
+    if (subAppId === undefined) {
       return ["about", "add", "remove"];
     }
 
-    return favoriteAppOrder.includes(appId) ? ["add"] : ["remove"];
-  }, [appId, favoriteAppOrder]);
+    return favoriteAppOrder.includes(subAppId) ? ["add"] : ["remove"];
+  }, [subAppId, favoriteAppOrder]);
 
   return {
     state: {
       disabledDropdownItemKeys,
     },
     action: {
-      addFavoriteApp: appId ? () => addFavoriteAppId(appId) : undefined,
-      removeFavoriteApp: appId ? () => removeFavoriteAppId(appId) : undefined,
+      addFavoriteApp: subAppId ? () => addFavoriteAppId(subAppId) : undefined,
+      removeFavoriteApp: subAppId ? () => removeFavoriteAppId(subAppId) : undefined,
     },
   };
 };

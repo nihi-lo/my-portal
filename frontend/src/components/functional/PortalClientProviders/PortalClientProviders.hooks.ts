@@ -10,6 +10,7 @@ import { useActiveAppStore } from "@/stores/activeAppStore";
 import { useSessionStore } from "@/stores/sessionStore";
 import { useSubAppStore } from "@/stores/subAppStore";
 import { type SubApp } from "@/types/subApp";
+import { type SubAppId } from "@/types/subAppID";
 import { type ContainerHook } from "@/utils/containerHook";
 
 type State = Record<string, never>;
@@ -33,7 +34,11 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
     if (topMatch) {
       updateActiveApp(stdAppsMetadata.id);
     } else if (appsMatch) {
-      updateActiveApp(appsMatch.params.appId);
+      if (appsMatch.params.appId !== undefined) {
+        updateActiveApp(appsMatch.params.appId as SubAppId);
+      } else {
+        updateActiveApp(undefined);
+      }
     } else {
       updateActiveApp(undefined);
     }

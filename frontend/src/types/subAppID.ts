@@ -1,3 +1,5 @@
-type SubAppID = string;
+import { type BrandType } from "@/utils/brandType";
 
-export { type SubAppID };
+type SubAppId = BrandType<string, "SubAppId">;
+
+export { type SubAppId };

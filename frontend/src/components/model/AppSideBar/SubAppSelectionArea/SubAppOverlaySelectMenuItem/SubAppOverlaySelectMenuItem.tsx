@@ -1,18 +1,18 @@
 import { useSubAppStore } from "@/stores/subAppStore";
-import { type SubAppID } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppID";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";
 
 interface Props {
-  subAppID: SubAppID;
+  subAppId: SubAppId;
 }
 
 const SubAppOverlaySelectMenuItem = (props: Props): JSX.Element => {
-  const { subAppID } = props;
+  const { subAppId } = props;
 
   const subAppList = useSubAppStore((state) => state.subAppList);
 
-  const app = subAppList.find((app) => app.metadata.id === subAppID);
+  const app = subAppList.find((app) => app.metadata.id === subAppId);
   if (app === undefined) {
     return <></>;
   }

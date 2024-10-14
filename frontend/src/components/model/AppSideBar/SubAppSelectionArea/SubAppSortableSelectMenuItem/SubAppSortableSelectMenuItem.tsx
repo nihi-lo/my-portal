@@ -3,17 +3,17 @@ import { CSS } from "@dnd-kit/utilities";
 import { Link } from "@nextui-org/react";
 
 import { useSubAppStore } from "@/stores/subAppStore";
-import { type SubAppID } from "@/types/subAppID";
+import { type SubAppId } from "@/types/subAppID";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";
 
 interface Props {
   isSelected?: boolean;
-  subAppID: SubAppID;
+  subAppId: SubAppId;
 }
 
 const SubAppSortableSelectMenuItem = (props: Props): JSX.Element => {
-  const { isSelected = false, subAppID } = props;
+  const { isSelected = false, subAppId } = props;
 
   const subAppList = useSubAppStore((store) => store.subAppList);
 
@@ -25,9 +25,9 @@ const SubAppSortableSelectMenuItem = (props: Props): JSX.Element => {
     setActivatorNodeRef,
     transform,
     transition,
-  } = useSortable({ id: subAppID });
+  } = useSortable({ id: subAppId });
 
-  const app = subAppList.find((app) => app.metadata.id === subAppID);
+  const app = subAppList.find((app) => app.metadata.id === subAppId);
   if (app === undefined) {
     return <></>;
   }
@@ -45,7 +45,7 @@ const SubAppSortableSelectMenuItem = (props: Props): JSX.Element => {
         hideTooltip={isDragging}
         isSelected={isSelected}
         appIconContent={
-          <Link href={`/apps/${subAppID}`}>
+          <Link href={`/apps/${subAppId}`}>
             <div ref={setActivatorNodeRef} {...attributes} {...listeners}>
               {isDragging ? <div className="size-12 bg-divider" /> : <app.metadata.Icon />}
             </div>

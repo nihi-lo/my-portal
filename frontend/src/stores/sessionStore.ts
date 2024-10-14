@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 import { type Session } from "@/types/session";
-import { type SessionStatus } from "@/types/sessionStatus";
+import { SessionStatus } from "@/types/enum/sessionStatus";
 
 interface State {
   session: Session | undefined | null;
@@ -17,20 +17,20 @@ const useSessionStore = create<State & Action>()(
   immer((set) => ({
     /* State */
     session: null,
-    status: "unauthenticated",
+    status: SessionStatus.Unauthenticated,
 
     /* Action */
     updateSession: (session, status) =>
       set((state) => {
         switch (status) {
-          case "loading":
+          case SessionStatus.Loading:
             state.session = undefined;
             break;
-          case "unauthenticated":
-            state.session = null;
-            break;
-          case "authenticated":
+          case SessionStatus.Authenticated:
             state.session = session;
+            break;
+          case SessionStatus.Unauthenticated:
+            state.session = null;
             break;
         }
         state.status = status;
