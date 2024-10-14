@@ -27,7 +27,7 @@ const useSubAppOperateDropdownProps: ContainerHook<State, Action, Argument> = (a
 
   const disabledDropdownItemKeys = useMemo(() => {
     if (subAppId === undefined) {
-      return ["about", "add", "remove"];
+      return ["add", "remove", "about"];
     }
 
     return favoriteAppOrder.includes(subAppId) ? ["add"] : ["remove"];

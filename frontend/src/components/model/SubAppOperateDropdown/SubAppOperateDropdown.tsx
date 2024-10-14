@@ -1,5 +1,11 @@
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
-import { RiInformation2Line, RiAddLine, RiIndeterminateCircleLine } from "react-icons/ri";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  DropdownSection,
+} from "@nextui-org/react";
+import { RiInformation2Line, RiAddLine, RiSubtractLine } from "react-icons/ri";
 
 import { type SubAppId } from "@/types/subAppId";
 
@@ -26,27 +32,28 @@ const SubAppOperateDropdown = (props: SubAppOperateDropdownProps): JSX.Element =
         disabledKeys={disabledDropdownItemKeys}
         variant="flat"
       >
-        <DropdownItem
-          key="about"
-          showDivider
-          startContent={<RiInformation2Line className="text-small" />}
-        >
-          このアプリについて
-        </DropdownItem>
-        <DropdownItem
-          key="add"
-          startContent={<RiAddLine className="text-small" />}
-          onClick={() => addFavoriteApp!()}
-        >
-          サイドバーへ追加
-        </DropdownItem>
-        <DropdownItem
-          key="remove"
-          startContent={<RiIndeterminateCircleLine className="text-small" />}
-          onClick={() => removeFavoriteApp!()}
-        >
-          サイドバーから削除
-        </DropdownItem>
+        <DropdownSection showDivider>
+          <DropdownItem
+            key="add"
+            startContent={<RiAddLine className="size-6" />}
+            onClick={() => addFavoriteApp!()}
+          >
+            サイドバーへ追加
+          </DropdownItem>
+          <DropdownItem
+            key="remove"
+            startContent={<RiSubtractLine className="size-6" />}
+            onClick={() => removeFavoriteApp!()}
+          >
+            サイドバーから削除
+          </DropdownItem>
+        </DropdownSection>
+
+        <DropdownSection>
+          <DropdownItem key="about" startContent={<RiInformation2Line className="size-6" />}>
+            このアプリについて
+          </DropdownItem>
+        </DropdownSection>
       </DropdownMenu>
     </Dropdown>
   );
