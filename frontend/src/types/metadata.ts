@@ -6,7 +6,7 @@ type Metadata = BrandType<
     id: SubAppId;
     title: string;
     description: string;
-    Icon: () => JSX.Element;
+    iconContent: React.ReactNode;
   },
   "Metadata"
 >;

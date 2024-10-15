@@ -47,7 +47,7 @@ const SubAppSortableSelectMenuItem = (props: SubAppSortableSelectMenuItemProps):
         appIconContent={
           <Link href={`/apps/${subAppId}`}>
             <div ref={setActivatorNodeRef} {...attributes} {...listeners}>
-              {isDragging ? <div className="size-12 bg-divider" /> : <app.metadata.Icon />}
+              {isDragging ? <div className="size-12 bg-divider" /> : app.metadata.iconContent}
             </div>
           </Link>
         }

@@ -22,11 +22,7 @@ const SubAppOverlaySelectMenuItem = (props: SubAppOverlaySelectMenuItemProps): J
       disableAnimation
       hideSelectionState
       hideTooltip
-      appIconContent={
-        <div className="cursor-grabbing">
-          <app.metadata.Icon />
-        </div>
-      }
+      appIconContent={<div className="cursor-grabbing">{app.metadata.iconContent}</div>}
     />
   );
 };

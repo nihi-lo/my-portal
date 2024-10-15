@@ -12,7 +12,7 @@ export const metadata = {
   id: "6876b3b6-307d-27ca-d845-6577357297c2",
   title: "学マス コンテストシミュ",
   description: "学園アイドルマスターのコンテストシミュレーター",
-  Icon: () => (
+  iconContent: (
     <Image
       disableAnimation
       alt="アプリアイコン"
@@ -23,7 +23,7 @@ export const metadata = {
   ),
 } as Metadata;
 
-export const App = (): JSX.Element => {
+export const AppRoutes = (): JSX.Element => {
   return (
     <Routes>
       <Route path="/" element={<TopPage />} />

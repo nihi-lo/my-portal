@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import { App as StdAppsApp } from "@/apps/std-apps-app";
+import { AppRoutes as StdAppsAppRoutes } from "@/apps/std-apps-app";
 import { RootLayout } from "@/components/layout/RootLayout";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { useSubAppStore } from "@/stores/subAppStore";
@@ -11,9 +11,13 @@ const PortalClient = (): JSX.Element => {
   return (
     <Routes>
       <Route element={<RootLayout />}>
-        <Route path="/" element={<StdAppsApp />} />
+        <Route path="/" element={<StdAppsAppRoutes />} />
         {subAppList.map((app) => (
-          <Route key={app.metadata.id} path={`/apps/${app.metadata.id}/*`} element={<app.App />} />
+          <Route
+            key={app.metadata.id}
+            path={`/apps/${app.metadata.id}/*`}
+            element={app.routeContent}
+          />
         ))}
         <Route path="*" element={<NotFoundPage />} />
       </Route>

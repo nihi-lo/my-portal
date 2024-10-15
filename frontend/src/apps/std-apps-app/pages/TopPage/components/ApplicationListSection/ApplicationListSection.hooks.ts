@@ -40,7 +40,7 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
                     key: app.metadata.id,
                     appId: app.metadata.id,
                     description: app.metadata.description,
-                    iconContent: app.metadata.Icon(),
+                    iconContent: app.metadata.iconContent,
                     subAppTopUrl: `/apps/${app.metadata.id}`,
                     title: app.metadata.title,
                   },

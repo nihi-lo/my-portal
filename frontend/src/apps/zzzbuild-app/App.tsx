@@ -12,7 +12,7 @@ export const metadata = {
   id: "c4db13c7-0be5-cc07-5de5-9843f757b8df",
   title: "ゼンゼロ ビルドツール",
   description: "エージェント毎に音動機とディスク管理",
-  Icon: () => (
+  iconContent: (
     <Image
       disableAnimation
       alt="アプリアイコン"
@@ -23,7 +23,7 @@ export const metadata = {
   ),
 } as Metadata;
 
-export const App = (): JSX.Element => {
+export const AppRoutes = (): JSX.Element => {
   return (
     <Routes>
       <Route path="/" element={<TopPage />} />

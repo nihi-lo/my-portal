@@ -58,9 +58,7 @@ const SubAppSelectionArea = (): JSX.Element => {
       <SubAppSelectIcon
         isSelected={activeApp?.metadata.id === stdAppsMetadata.id}
         appIconContent={
-          <Link href={`/apps/${stdAppsMetadata.id}`}>
-            <stdAppsMetadata.Icon />
-          </Link>
+          <Link href={`/apps/${stdAppsMetadata.id}`}>{stdAppsMetadata.iconContent}</Link>
         }
         tooltipContent={stdAppsMetadata.title}
       />
