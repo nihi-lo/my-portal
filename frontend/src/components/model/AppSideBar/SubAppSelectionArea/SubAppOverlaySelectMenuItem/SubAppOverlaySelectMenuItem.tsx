@@ -12,7 +12,7 @@ const SubAppOverlaySelectMenuItem = (props: SubAppOverlaySelectMenuItemProps): J
 
   const subAppList = useSubAppStore((state) => state.subAppList);
 
-  const app = subAppList.find((app) => app.metadata.id === subAppId);
+  const app = subAppList.find((app) => app.id === subAppId);
   if (app === undefined) {
     return <></>;
   }
@@ -22,7 +22,7 @@ const SubAppOverlaySelectMenuItem = (props: SubAppOverlaySelectMenuItemProps): J
       disableAnimation
       hideSelectionState
       hideTooltip
-      appIconContent={<div className="cursor-grabbing">{app.metadata.iconContent}</div>}
+      appIconContent={<div className="cursor-grabbing">{app.icon.mediumContent}</div>}
     />
   );
 };

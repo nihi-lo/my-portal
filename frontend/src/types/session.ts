@@ -2,10 +2,10 @@ import { type BrandType } from "@/utils/brandType";
 
 type Session = BrandType<
   {
-    user: {
-      name: string;
-      email: string;
-      image: string;
+    readonly user: {
+      readonly name: string;
+      readonly email: string;
+      readonly image: string;
     };
   },
   "Session"

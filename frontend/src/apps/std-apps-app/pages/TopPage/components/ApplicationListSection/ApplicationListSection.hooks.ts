@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
+import { subApp as stdAppsApp } from "@/apps/std-apps-app";
 import { useSubAppStore } from "@/stores/subAppStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
@@ -32,16 +32,16 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
       subAppList
         .reduce<ListItem[]>(
           (acc, app) =>
-            app.metadata.id === stdAppsMetadata.id
+            app.id === stdAppsApp.id
               ? acc
               : [
                   ...acc,
                   {
-                    key: app.metadata.id,
-                    appId: app.metadata.id,
+                    key: app.id,
+                    appId: app.id,
                     description: app.metadata.description,
-                    iconContent: app.metadata.iconContent,
-                    subAppTopUrl: `/apps/${app.metadata.id}`,
+                    iconContent: app.icon.mediumContent,
+                    subAppTopUrl: `/apps/${app.id}`,
                     title: app.metadata.title,
                   },
                 ],

@@ -27,7 +27,7 @@ const SubAppSortableSelectMenuItem = (props: SubAppSortableSelectMenuItemProps):
     transition,
   } = useSortable({ id: subAppId });
 
-  const app = subAppList.find((app) => app.metadata.id === subAppId);
+  const app = subAppList.find((app) => app.id === subAppId);
   if (app === undefined) {
     return <></>;
   }
@@ -47,7 +47,11 @@ const SubAppSortableSelectMenuItem = (props: SubAppSortableSelectMenuItemProps):
         appIconContent={
           <Link href={`/apps/${subAppId}`}>
             <div ref={setActivatorNodeRef} {...attributes} {...listeners}>
-              {isDragging ? <div className="size-12 bg-divider" /> : app.metadata.iconContent}
+              {isDragging ? (
+                <div className="size-12 rounded-large bg-divider" />
+              ) : (
+                app.icon.mediumContent
+              )}
             </div>
           </Link>
         }

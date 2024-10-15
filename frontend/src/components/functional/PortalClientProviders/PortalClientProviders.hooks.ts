@@ -4,7 +4,7 @@ import { useMatch } from "react-router-dom";
 import { UpdateSessionAsync } from "@wailsjs/go/portalservice/Service";
 import { EventsOn } from "@wailsjs/runtime/runtime";
 
-import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
+import { subApp as stdAppsApp } from "@/apps/std-apps-app";
 import { subApps } from "@/apps/subApps";
 import { useActiveAppStore } from "@/stores/activeAppStore";
 import { useSessionStore } from "@/stores/sessionStore";
@@ -32,7 +32,7 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
   useEffect(() => {
     // 現在のURLからアクティブなアプリを判別し、 ActiveAppId に設定する
     if (topMatch) {
-      updateActiveApp(stdAppsMetadata.id);
+      updateActiveApp(stdAppsApp.id);
     } else if (appsMatch) {
       if (appsMatch.params.appId !== undefined) {
         updateActiveApp(appsMatch.params.appId as SubAppId);

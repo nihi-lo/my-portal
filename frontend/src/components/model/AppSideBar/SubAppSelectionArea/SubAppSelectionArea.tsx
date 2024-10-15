@@ -12,7 +12,7 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-ki
 import { Divider, Link } from "@nextui-org/react";
 import { useState } from "react";
 
-import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
+import { subApp as stdAppsApp } from "@/apps/std-apps-app";
 import { VStack } from "@/components/ui";
 import { useActiveAppStore } from "@/stores/activeAppStore";
 import { useFavoriteAppOrderStore } from "@/stores/favoriteAppOrderStore";
@@ -56,11 +56,11 @@ const SubAppSelectionArea = (): JSX.Element => {
   return (
     <VStack align="center" py="sm" gap="sm">
       <SubAppSelectIcon
-        isSelected={activeApp?.metadata.id === stdAppsMetadata.id}
+        isSelected={activeApp?.id === stdAppsApp.id}
         appIconContent={
-          <Link href={`/apps/${stdAppsMetadata.id}`}>{stdAppsMetadata.iconContent}</Link>
+          <Link href={`/apps/${stdAppsApp.id}`}>{stdAppsApp.icon.mediumContent}</Link>
         }
-        tooltipContent={stdAppsMetadata.title}
+        tooltipContent={stdAppsApp.metadata.title}
       />
 
       <Divider className="w-4/5" />
@@ -75,7 +75,7 @@ const SubAppSelectionArea = (): JSX.Element => {
           {favoriteAppOrder.map((appId) => (
             <SubAppSortableSelectMenuItem
               key={appId}
-              isSelected={activeApp?.metadata.id === appId}
+              isSelected={activeApp?.id === appId}
               subAppId={appId}
             />
           ))}

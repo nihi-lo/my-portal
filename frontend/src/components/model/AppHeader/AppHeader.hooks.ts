@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 import { WindowToggleMaximise } from "@wailsjs/runtime/runtime";
 
-import { metadata as stdAppsMetadata } from "@/apps/std-apps-app";
+import { subApp as stdAppsApp } from "@/apps/std-apps-app";
 import { useOS } from "@/hooks/useOS";
 import { useActiveAppStore } from "@/stores/activeAppStore";
 import { OS } from "@/types/enum/os";
@@ -29,7 +29,7 @@ const useAppHeader: ContainerHook<State, Action> = () => {
   } = useOS();
 
   const showSubAppOperateDropdown = useMemo(
-    () => (activeApp ? activeApp.metadata.id !== stdAppsMetadata.id : false),
+    () => (activeApp ? activeApp.id !== stdAppsApp.id : false),
     [activeApp],
   );
   const showBrandLogo = useMemo(() => os === OS.Windows, [os]);
@@ -38,7 +38,7 @@ const useAppHeader: ContainerHook<State, Action> = () => {
 
   return {
     state: {
-      activeAppId: activeApp?.metadata.id,
+      activeAppId: activeApp?.id,
       showBrandLogo,
       showSubAppOperateDropdown,
       showWindowControl,
