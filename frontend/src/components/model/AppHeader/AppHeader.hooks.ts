@@ -10,7 +10,9 @@ import { type SubAppId } from "@/types/subAppId";
 import { type ContainerHook } from "@/utils/containerHook";
 
 interface State {
+  activeAppIconContent: React.ReactNode;
   activeAppId: SubAppId | undefined;
+  showActiveAppIconContent: boolean;
   showBrandLogo: boolean;
   showSubAppOperateDropdown: boolean;
   showWindowControl: boolean;
@@ -28,6 +30,7 @@ const useAppHeader: ContainerHook<State, Action> = () => {
     state: { os },
   } = useOS();
 
+  const showActiveAppIconContent = useMemo(() => (activeApp ? true : false), [activeApp]);
   const showSubAppOperateDropdown = useMemo(
     () => (activeApp ? activeApp.id !== stdAppsApp.id : false),
     [activeApp],
@@ -38,7 +41,9 @@ const useAppHeader: ContainerHook<State, Action> = () => {
 
   return {
     state: {
+      activeAppIconContent: activeApp?.icon.smallContent,
       activeAppId: activeApp?.id,
+      showActiveAppIconContent,
       showBrandLogo,
       showSubAppOperateDropdown,
       showWindowControl,

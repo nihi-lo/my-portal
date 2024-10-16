@@ -12,7 +12,9 @@ import { WindowNavigationButtonGroup } from "./WindowNavigationButtonGroup";
 const AppHeader = (): JSX.Element => {
   const {
     state: {
+      activeAppIconContent,
       activeAppId,
+      showActiveAppIconContent,
       showBrandLogo,
       showSubAppOperateDropdown,
       showWindowControl,
@@ -34,12 +36,12 @@ const AppHeader = (): JSX.Element => {
 
       <HStack
         align="center"
-        gap="xs"
+        gap="sm"
         justify="center"
         onDoubleClick={toggleWindowMaximize}
         className="mx-40 h-9"
       >
-        {showSubAppOperateDropdown && <div className="h-6 w-6 min-w-6" />}
+        {showActiveAppIconContent && activeAppIconContent}
         <p className="truncate text-small font-semibold text-content2-foreground">{windowTitle}</p>
         {showSubAppOperateDropdown && (
           <SubAppOperateDropdown
