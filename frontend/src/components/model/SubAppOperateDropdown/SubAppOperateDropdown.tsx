@@ -33,25 +33,25 @@ const SubAppOperateDropdown = (props: SubAppOperateDropdownProps): JSX.Element =
         variant="flat"
       >
         <DropdownSection showDivider>
+          <DropdownItem key="about" startContent={<RiInformation2Line className="size-5" />}>
+            このアプリについて...
+          </DropdownItem>
+        </DropdownSection>
+
+        <DropdownSection>
           <DropdownItem
             key="add"
-            startContent={<RiAddLine className="size-6" />}
+            startContent={<RiAddLine className="size-5" />}
             onClick={() => addFavoriteApp!()}
           >
             サイドバーへ追加
           </DropdownItem>
           <DropdownItem
             key="remove"
-            startContent={<RiSubtractLine className="size-6" />}
+            startContent={<RiSubtractLine className="size-5" />}
             onClick={() => removeFavoriteApp!()}
           >
             サイドバーから削除
-          </DropdownItem>
-        </DropdownSection>
-
-        <DropdownSection>
-          <DropdownItem key="about" startContent={<RiInformation2Line className="size-6" />}>
-            このアプリについて
           </DropdownItem>
         </DropdownSection>
       </DropdownMenu>
