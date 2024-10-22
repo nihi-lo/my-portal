@@ -14,7 +14,7 @@ const SearchInput = (props: SearchInputProps): JSX.Element => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [isComposing, setIsComposing] = useState<boolean>(false);
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const { endContentChip, searchIcon } = searchInputVariants({
     showSearchChip: searchValue !== "",
