@@ -1,17 +1,24 @@
+import { type ReadonlyDeep } from "type-fest";
+
+import { deepFreeze } from "@/utils/deepFreeze";
+
 abstract class BaseValueObject<T> {
-  constructor(private readonly _props: T) {
-    this._props = Object.freeze(_props);
+  readonly #props: ReadonlyDeep<T>;
+
+  constructor(props: T) {
+    this.#props = deepFreeze(props);
   }
 
-  protected get props(): T {
-    return this._props;
+  protected get props(): ReadonlyDeep<T> {
+    return this.#props;
   }
 
   equals(object: unknown): boolean {
     if (object === null || !(object instanceof BaseValueObject)) {
       return false;
     }
-    return JSON.stringify(this._props) === JSON.stringify(object._props);
+
+    return JSON.stringify(this.props) === JSON.stringify(object.props);
   }
 }
 

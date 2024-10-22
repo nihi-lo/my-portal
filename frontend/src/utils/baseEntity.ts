@@ -1,23 +1,34 @@
-abstract class BaseEntity<T> {
-  constructor(
-    private readonly _id: string,
-    private _props: T,
-  ) {}
+interface BaseEntityProps {
+  /** Entity ID */
+  id: string;
+}
 
-  get id(): string {
-    return this._id;
+abstract class BaseEntity<T extends BaseEntityProps> {
+  readonly #id: string;
+  #props: Omit<T, "id">;
+
+  constructor(props: T) {
+    const { id, ...otherProps } = props;
+
+    this.#id = id;
+    this.#props = otherProps;
   }
 
-  protected get props(): T {
-    return this._props;
+  get id(): string {
+    return this.#id;
+  }
+
+  protected get props(): Omit<T, "id"> {
+    return this.#props;
   }
 
   equals(object: unknown): boolean {
     if (object === null || !(object instanceof BaseEntity)) {
       return false;
     }
+
     return this.id === object.id;
   }
 }
 
-export { BaseEntity };
+export { BaseEntity, type BaseEntityProps };
