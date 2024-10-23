@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-import { type Session } from "@/types/session";
 import { SessionStatus } from "@/types/enum/sessionStatus";
+import { type Session } from "@/types/session";
 
 interface State {
   session: Session | undefined | null;
