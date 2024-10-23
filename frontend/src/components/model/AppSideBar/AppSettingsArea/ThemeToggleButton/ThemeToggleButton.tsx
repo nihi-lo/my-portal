@@ -9,17 +9,18 @@ import {
 type ThemeToggleButtonProps = ThemeToggleButtonVariantProps;
 
 const ThemeToggleButton = (props: ThemeToggleButtonProps): JSX.Element => {
+  const { size, ...otherProps } = props;
   const {
     state: { theme, isLoading },
     action: { switchTheme },
   } = useThemeToggleButton();
 
-  const { themeIcon } = themeToggleButtonVariants(props);
+  const { themeIcon } = themeToggleButtonVariants({ size, ...otherProps });
 
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button isIconOnly isLoading={isLoading} size={props.size} variant="light">
+        <Button isIconOnly isLoading={isLoading} size={size} variant="light">
           {theme && <theme.Icon className={themeIcon()} />}
         </Button>
       </DropdownTrigger>

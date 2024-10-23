@@ -1,7 +1,7 @@
-import { useSubAppStore } from "@/stores/subAppStore";
 import { type SubAppId } from "@/types/subAppId";
 
 import { SubAppSelectIcon } from "../SubAppSelectIcon";
+import { useSubAppOverlaySelectMenuItem } from "./SubAppOverlaySelectMenuItem.hooks";
 
 interface SubAppOverlaySelectMenuItemProps {
   subAppId: SubAppId;
@@ -9,21 +9,21 @@ interface SubAppOverlaySelectMenuItemProps {
 
 const SubAppOverlaySelectMenuItem = (props: SubAppOverlaySelectMenuItemProps): JSX.Element => {
   const { subAppId } = props;
-
-  const subAppList = useSubAppStore((state) => state.subAppList);
-
-  const app = subAppList.find((app) => app.id === subAppId);
-  if (app === undefined) {
-    return <></>;
-  }
+  const {
+    state: { subApp },
+  } = useSubAppOverlaySelectMenuItem({ subAppId });
 
   return (
-    <SubAppSelectIcon
-      disableAnimation
-      hideSelectionState
-      hideTooltip
-      appIconContent={<div className="cursor-grabbing">{app.icon.mediumContent}</div>}
-    />
+    <>
+      {subApp && (
+        <SubAppSelectIcon
+          disableAnimation
+          hideSelectionState
+          hideTooltip
+          appIconContent={<div className="cursor-grabbing">{subApp.icon.mediumContent}</div>}
+        />
+      )}
+    </>
   );
 };
 

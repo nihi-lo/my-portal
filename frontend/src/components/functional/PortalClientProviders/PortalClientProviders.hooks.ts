@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 
 import { UpdateSessionAsync } from "@wailsjs/go/portalservice/Service";
 import { EventsOn } from "@wailsjs/runtime/runtime";
@@ -15,13 +15,16 @@ import { type ContainerHook } from "@/utils/containerHook";
 
 type State = Record<string, never>;
 
-type Action = Record<string, never>;
+interface Action {
+  navigate: (path: string) => void;
+}
 
 const usePortalClientProviders: ContainerHook<State, Action> = () => {
   const updateActiveApp = useActiveAppStore((state) => state.updateActiveApp);
   const updateSession = useSessionStore((state) => state.updateSession);
   const updateSubAppList = useSubAppStore((state) => state.updateSubAppList);
 
+  const navigate = useNavigate();
   const topMatch = useMatch("/");
   const appsMatch = useMatch("/apps/:appId/*");
 
@@ -56,7 +59,9 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
 
   return {
     state: {},
-    action: {},
+    action: {
+      navigate,
+    },
   };
 };
 

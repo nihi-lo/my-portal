@@ -1,6 +1,5 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider } from "next-themes";
-import { useNavigate } from "react-router-dom";
 
 import { usePortalClientProviders } from "./PortalClientProviders.hooks";
 
@@ -10,10 +9,9 @@ interface PortalClientProvidersProps {
 
 const PortalClientProviders = (props: PortalClientProvidersProps): JSX.Element => {
   const { children } = props;
-
-  const _ = usePortalClientProviders();
-
-  const navigate = useNavigate();
+  const {
+    action: { navigate },
+  } = usePortalClientProviders();
 
   return (
     <NextUIProvider locale="ja-JP" navigate={navigate}>
