@@ -3,7 +3,7 @@ import { VStack } from "@/components/ui";
 import { AccountSignInButton } from "./AccountSignInButton";
 import { ThemeToggleButton } from "./ThemeToggleButton";
 
-const AppSettingsArea = (): JSX.Element => {
+const PortalClientSettingsArea = (): JSX.Element => {
   return (
     <VStack align="center" py="sm" gap="sm">
       <AccountSignInButton />
@@ -12,4 +12,4 @@ const AppSettingsArea = (): JSX.Element => {
   );
 };
 
-export { AppSettingsArea };
+export { PortalClientSettingsArea };

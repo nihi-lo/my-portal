@@ -4,12 +4,12 @@ import { RiMore2Fill } from "react-icons/ri";
 import { SubAppOperateDropdown } from "@/components/model/SubAppOperateDropdown";
 import { HStack } from "@/components/ui";
 
-import { useAppHeader } from "./AppHeader.hooks";
 import { BrandLogo } from "./BrandLogo";
+import { usePortalClientHeader } from "./PortalClientHeader.hooks";
 import { WindowControlButtonGroup } from "./WindowControlButtonGroup";
 import { WindowNavigationButtonGroup } from "./WindowNavigationButtonGroup";
 
-const AppHeader = (): JSX.Element => {
+const PortalClientHeader = (): JSX.Element => {
   const {
     state: {
       activeAppIconContent,
@@ -21,7 +21,7 @@ const AppHeader = (): JSX.Element => {
       windowTitle,
     },
     action: { toggleWindowMaximize },
-  } = useAppHeader();
+  } = usePortalClientHeader();
 
   return (
     <header className="relative cursor-default select-none" style={{ widows: 1 }}>
@@ -69,4 +69,4 @@ const AppHeader = (): JSX.Element => {
   );
 };
 
-export { AppHeader };
+export { PortalClientHeader };

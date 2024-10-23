@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 
-import { AppBody } from "@/components/model/AppBody";
-import { AppHeader } from "@/components/model/AppHeader";
-import { AppSideBar } from "@/components/model/AppSideBar";
+import { PortalClientBody } from "@/components/model/PortalClientBody";
+import { PortalClientHeader } from "@/components/model/PortalClientHeader";
+import { PortalClientSideBar } from "@/components/model/PortalClientSideBar";
 import { VStack, HStack } from "@/components/ui";
 
 import { useRootLayout } from "./RootLayout.hooks";
@@ -17,14 +17,14 @@ const RootLayout = (): JSX.Element => {
 
   return (
     <VStack className={base()}>
-      <AppHeader />
+      <PortalClientHeader />
       <HStack grow="1" className="overflow-hidden overscroll-y-auto">
         <HStack className="sticky top-0 z-10">
-          <AppSideBar />
+          <PortalClientSideBar />
         </HStack>
-        <AppBody>
+        <PortalClientBody>
           <Outlet />
-        </AppBody>
+        </PortalClientBody>
       </HStack>
     </VStack>
   );

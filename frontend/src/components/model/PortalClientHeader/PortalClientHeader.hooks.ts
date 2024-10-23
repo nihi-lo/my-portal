@@ -23,7 +23,7 @@ interface Action {
   toggleWindowMaximize: () => void;
 }
 
-const useAppHeader: ContainerHook<State, Action> = () => {
+const usePortalClientHeader: ContainerHook<State, Action> = () => {
   const activeApp = useActiveAppStore((state) => state.activeApp);
 
   const {
@@ -55,4 +55,4 @@ const useAppHeader: ContainerHook<State, Action> = () => {
   };
 };
 
-export { useAppHeader };
+export { usePortalClientHeader };

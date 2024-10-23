@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-const appBodyVariants = tv({
+const portalClientBodyVariants = tv({
   slots: {
     base: "z-0 size-full overflow-hidden overscroll-none rounded-tl-2xl bg-background",
     inner: "size-full overflow-auto",
@@ -8,6 +8,6 @@ const appBodyVariants = tv({
   variants: {},
 });
 
-type AppBodyVariantProps = VariantProps<typeof appBodyVariants>;
+type PortalClientBodyVariantProps = VariantProps<typeof portalClientBodyVariants>;
 
-export { appBodyVariants, type AppBodyVariantProps };
+export { portalClientBodyVariants, type PortalClientBodyVariantProps };

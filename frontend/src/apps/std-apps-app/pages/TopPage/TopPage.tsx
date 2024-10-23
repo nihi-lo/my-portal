@@ -1,11 +1,11 @@
 import { Container } from "@/components/ui";
 
-import { ApplicationListSection } from "./components/ApplicationListSection";
+import { SubAppListSection } from "./components/SubAppListSection";
 
 const TopPage = (): JSX.Element => {
   return (
     <Container as="main">
-      <ApplicationListSection />
+      <SubAppListSection />
     </Container>
   );
 };

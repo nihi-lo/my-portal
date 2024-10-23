@@ -4,7 +4,7 @@ import { subApp as stdAppsApp } from "@/apps/std-apps-app";
 import { useSubAppStore } from "@/stores/subAppStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
-import { type ListItem } from "./ApplicationListSection.types";
+import { type ListItem } from "./SubAppListSection.types";
 
 interface State {
   listItems: ListItem[];
@@ -15,7 +15,7 @@ interface Action {
   searchApplication: (searchValue: string) => void;
 }
 
-const useApplicationListSection: ContainerHook<State, Action> = () => {
+const useSubAppListSection: ContainerHook<State, Action> = () => {
   const subAppList = useSubAppStore((state) => state.subAppList);
 
   const [latestSearchValue, setLatestSearchValue] = useState<string | undefined>(undefined);
@@ -75,4 +75,4 @@ const useApplicationListSection: ContainerHook<State, Action> = () => {
   };
 };
 
-export { useApplicationListSection };
+export { useSubAppListSection };

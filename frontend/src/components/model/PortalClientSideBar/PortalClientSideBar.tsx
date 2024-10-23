@@ -1,15 +1,15 @@
 import { VStack } from "@/components/ui";
 
-import { AppSettingsArea } from "./AppSettingsArea";
+import { PortalClientSettingsArea } from "./PortalClientSettingsArea";
 import { SubAppSelectionArea } from "./SubAppSelectionArea";
 
-const AppSideBar = (): JSX.Element => {
+const PortalClientSideBar = (): JSX.Element => {
   return (
     <VStack as="aside" align="center" justify="between" className="h-full w-20">
       <SubAppSelectionArea />
-      <AppSettingsArea />
+      <PortalClientSettingsArea />
     </VStack>
   );
 };
 
-export { AppSideBar };
+export { PortalClientSideBar };

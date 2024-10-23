@@ -4,14 +4,14 @@ import { RiMore2Fill } from "react-icons/ri";
 import { SubAppOperateDropdown } from "@/components/model/SubAppOperateDropdown";
 import { Section, HStack } from "@/components/ui";
 
-import { useApplicationListSection } from "./ApplicationListSection.hooks";
 import { SearchInput } from "./SearchInput";
+import { useSubAppListSection } from "./SubAppListSection.hooks";
 
-const ApplicationListSection = (): JSX.Element => {
+const SubAppListSection = (): JSX.Element => {
   const {
     state: { listItems, searchResultMessage },
     action: { searchApplication },
-  } = useApplicationListSection();
+  } = useSubAppListSection();
 
   return (
     <Section
@@ -60,4 +60,4 @@ const ApplicationListSection = (): JSX.Element => {
   );
 };
 
-export { ApplicationListSection };
+export { SubAppListSection };
