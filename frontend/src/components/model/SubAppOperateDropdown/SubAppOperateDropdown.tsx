@@ -10,7 +10,7 @@ import { RiInformation2Line, RiAddLine, RiSubtractLine } from "react-icons/ri";
 import { type SubAppId } from "@/types/subAppId";
 
 import { SubAppAboutModal } from "./SubAppAboutModal";
-import { useSubAppOperateDropdownProps } from "./SubAppOperateDropdown.hooks";
+import { useSubAppOperateDropdown } from "./SubAppOperateDropdown.hooks";
 
 interface SubAppOperateDropdownProps {
   subAppId: SubAppId | undefined;
@@ -22,7 +22,7 @@ const SubAppOperateDropdown = (props: SubAppOperateDropdownProps): JSX.Element =
   const {
     state: { disabledDropdownItemKeys, isSubAppAboutModalOpen },
     action: { addFavoriteApp, closeSubAppAboutModal, openSubAppAboutModal, removeFavoriteApp },
-  } = useSubAppOperateDropdownProps({ subAppId });
+  } = useSubAppOperateDropdown({ subAppId });
 
   return (
     <>

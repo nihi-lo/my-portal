@@ -21,7 +21,7 @@ interface Argument {
   subAppId: SubAppId | undefined;
 }
 
-const useSubAppOperateDropdownProps: ContainerHook<State, Action, Argument> = (args) => {
+const useSubAppOperateDropdown: ContainerHook<State, Action, Argument> = (args) => {
   const { subAppId } = args;
 
   const favoriteAppOrder = useFavoriteAppOrderStore((state) => state.favoriteAppOrder);
@@ -57,4 +57,4 @@ const useSubAppOperateDropdownProps: ContainerHook<State, Action, Argument> = (a
   };
 };
 
-export { useSubAppOperateDropdownProps };
+export { useSubAppOperateDropdown };
