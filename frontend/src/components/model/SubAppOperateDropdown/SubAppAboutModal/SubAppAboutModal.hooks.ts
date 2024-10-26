@@ -8,7 +8,7 @@ interface State {
   title: string;
 }
 
-type Action = Record<string, never>;
+type Action = undefined;
 
 interface Argument {
   subAppId: SubAppId | undefined;
@@ -28,7 +28,7 @@ const useSubAppAboutModal: ContainerHook<State, Action, Argument> = (args) => {
     state: {
       title: targetSubApp ? targetSubApp.metadata.title : "",
     },
-    action: {},
+    action: undefined,
   };
 };
 

@@ -2,7 +2,7 @@ import { Quit } from "@wailsjs/runtime/runtime";
 
 import { type ContainerHook } from "@/utils/containerHook";
 
-type State = Record<string, never>;
+type State = undefined;
 
 interface Action {
   quitWindow: () => void;
@@ -10,7 +10,7 @@ interface Action {
 
 const useBrandLogo: ContainerHook<State, Action> = () => {
   return {
-    state: {},
+    state: undefined,
     action: {
       quitWindow: Quit,
     },

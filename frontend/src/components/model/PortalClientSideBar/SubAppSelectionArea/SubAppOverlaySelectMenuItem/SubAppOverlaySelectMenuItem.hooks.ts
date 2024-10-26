@@ -9,7 +9,7 @@ interface State {
   subApp: SubApp | undefined;
 }
 
-type Action = Record<string, never>;
+type Action = undefined;
 
 interface Argument {
   subAppId: SubAppId;
@@ -29,7 +29,7 @@ const useSubAppOverlaySelectMenuItem: ContainerHook<State, Action, Argument> = (
     state: {
       subApp,
     },
-    action: {},
+    action: undefined,
   };
 };
 

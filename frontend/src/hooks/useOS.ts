@@ -9,7 +9,7 @@ interface State {
   os: OS;
 }
 
-type Action = Record<string, never>;
+type Action = undefined;
 
 const useOS: CustomHook<State, Action> = () => {
   const [os, setOS] = useState<OS>(OS.Undetermined);
@@ -34,7 +34,7 @@ const useOS: CustomHook<State, Action> = () => {
     state: {
       os,
     },
-    action: {},
+    action: undefined,
   };
 };
 

@@ -4,7 +4,7 @@ import { SignInAsync } from "@wailsjs/go/portalservice/Service";
 
 import { type CustomHook } from "@/utils/customHook";
 
-type State = Record<string, never>;
+type State = undefined;
 
 interface Action {
   signIn: () => void;
@@ -12,7 +12,7 @@ interface Action {
 
 const useAuth: CustomHook<State, Action> = () => {
   return {
-    state: {},
+    state: undefined,
     action: {
       signIn: useCallback(() => void SignInAsync(), []),
     },

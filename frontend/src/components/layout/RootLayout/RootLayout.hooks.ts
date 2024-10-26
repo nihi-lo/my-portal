@@ -7,7 +7,7 @@ interface State {
   showWindowBorder: boolean;
 }
 
-type Action = Record<string, never>;
+type Action = undefined;
 
 const useRootLayout: ContainerHook<State, Action> = () => {
   const {
@@ -21,7 +21,7 @@ const useRootLayout: ContainerHook<State, Action> = () => {
     state: {
       showWindowBorder: os === OS.Windows && !isMaximised,
     },
-    action: {},
+    action: undefined,
   };
 };
 

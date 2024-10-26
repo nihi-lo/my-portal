@@ -13,7 +13,7 @@ import { type SubApp } from "@/types/subApp";
 import { type SubAppId } from "@/types/subAppId";
 import { type ContainerHook } from "@/utils/containerHook";
 
-type State = Record<string, never>;
+type State = undefined;
 
 interface Action {
   navigate: (path: string) => void;
@@ -58,7 +58,7 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
   }, [updateSubAppList]);
 
   return {
-    state: {},
+    state: undefined,
     action: {
       navigate,
     },

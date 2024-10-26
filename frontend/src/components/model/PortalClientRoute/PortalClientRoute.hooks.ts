@@ -11,7 +11,7 @@ interface State {
   routeList: Route[];
 }
 
-type Action = Record<string, never>;
+type Action = undefined;
 
 const usePortalClientRoute: ContainerHook<State, Action> = () => {
   const subAppList = useSubAppStore((state) => state.subAppList);
@@ -31,7 +31,7 @@ const usePortalClientRoute: ContainerHook<State, Action> = () => {
       rootRouteContent: stdAppsApp.routeContent,
       routeList,
     },
-    action: {},
+    action: undefined,
   };
 };
 
