@@ -1,27 +1,22 @@
 import { Dropdown, DropdownTrigger, Button, DropdownMenu, DropdownItem } from "@nextui-org/react";
 
 import { useThemeToggleButton } from "./ThemeToggleButton.hooks";
-import {
-  type ThemeToggleButtonVariantProps,
-  themeToggleButtonVariants,
-} from "./ThemeToggleButton.variants";
+import { type ThemeToggleButtonVariantProps } from "./ThemeToggleButton.variants";
 
 type ThemeToggleButtonProps = ThemeToggleButtonVariantProps;
 
 const ThemeToggleButton = (props: ThemeToggleButtonProps): JSX.Element => {
-  const { size, ...otherProps } = props;
+  const { size } = props;
   const {
-    state: { theme, isLoading },
+    state: { theme, isLoading, tvSlots },
     action: { switchTheme },
-  } = useThemeToggleButton();
-
-  const { themeIcon } = themeToggleButtonVariants({ size, ...otherProps });
+  } = useThemeToggleButton({ size });
 
   return (
     <Dropdown>
       <DropdownTrigger>
         <Button isIconOnly isLoading={isLoading} size={size} variant="light">
-          {theme && <theme.Icon className={themeIcon()} />}
+          {theme && <theme.Icon className={tvSlots.themeIcon()} />}
         </Button>
       </DropdownTrigger>
       <DropdownMenu

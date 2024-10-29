@@ -2,10 +2,8 @@ import { Tooltip } from "@nextui-org/react";
 
 import { HStack } from "@/components/ui";
 
-import {
-  type SubAppSelectIconVariantProps,
-  subAppSelectIconVariants,
-} from "./SubAppSelectIcon.variants";
+import { useSubAppSelectIcon } from "./SubAppSelectIcon.hooks";
+import { type SubAppSelectIconVariantProps } from "./SubAppSelectIcon.variants";
 
 interface SubAppSelectIconProps extends SubAppSelectIconVariantProps {
   appIconContent: React.ReactNode;
@@ -22,8 +20,9 @@ const SubAppSelectIcon = (props: SubAppSelectIconProps): JSX.Element => {
     isSelected = false,
     tooltipContent = undefined,
   } = props;
-
-  const { iconWrapper, selectionState } = subAppSelectIconVariants({
+  const {
+    state: { tvSlots },
+  } = useSubAppSelectIcon({
     disableAnimation,
     hideSelectionState,
     isSelected,
@@ -40,9 +39,9 @@ const SubAppSelectIcon = (props: SubAppSelectIconProps): JSX.Element => {
         closeDelay={0}
         classNames={{ base: "pointer-events-none select-none" }}
       >
-        <div className={iconWrapper()}>{appIconContent}</div>
+        <div className={tvSlots.iconWrapper()}>{appIconContent}</div>
       </Tooltip>
-      <div className={selectionState()} />
+      <div className={tvSlots.selectionState()} />
     </HStack>
   );
 };

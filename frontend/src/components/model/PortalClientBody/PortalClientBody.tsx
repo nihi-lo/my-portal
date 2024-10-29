@@ -1,7 +1,5 @@
-import {
-  type PortalClientBodyVariantProps,
-  portalClientBodyVariants,
-} from "./PortalClientBody.variants";
+import { usePortalClientBody } from "./PortalClientBody.hooks";
+import { type PortalClientBodyVariantProps } from "./PortalClientBody.variants";
 
 type PortalClientBodyProps = PortalClientBodyVariantProps & {
   children: React.ReactNode;
@@ -9,12 +7,13 @@ type PortalClientBodyProps = PortalClientBodyVariantProps & {
 
 const PortalClientBody = (props: PortalClientBodyProps): JSX.Element => {
   const { children } = props;
-
-  const { base, inner } = portalClientBodyVariants();
+  const {
+    state: { tvSlots },
+  } = usePortalClientBody();
 
   return (
-    <div className={base()}>
-      <div className={inner()}>{children}</div>
+    <div className={tvSlots.base()}>
+      <div className={tvSlots.inner()}>{children}</div>
     </div>
   );
 };

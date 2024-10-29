@@ -1,6 +1,7 @@
 import React from "react";
 
-import { type VStackVariantProps, vStackVariants } from "./VStack.variants";
+import { useVStack } from "./VStack.hooks";
+import { type VStackVariantProps } from "./VStack.variants";
 
 interface VStackProps
   extends Omit<React.ComponentPropsWithoutRef<"aside" | "div" | "main">, "style">,
@@ -20,15 +21,16 @@ const VStack = (props: VStackProps): JSX.Element => {
     pt,
     grow,
     children,
-    className,
+    className: extendClassName,
     as: Tag = "div",
     ...otherProps
   } = props;
-
-  const { base } = vStackVariants({ align, justify, wrap, gap, p, px, py, pt, grow });
+  const {
+    state: { tvSlots },
+  } = useVStack({ align, justify, wrap, gap, p, px, py, pt, grow });
 
   return (
-    <Tag className={base({ className })} {...otherProps}>
+    <Tag className={tvSlots.base(extendClassName)} {...otherProps}>
       {children}
     </Tag>
   );

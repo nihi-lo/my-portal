@@ -1,15 +1,17 @@
 import { useContestResultStore } from "@/apps/gakusim-app/pages/TopPage/stores/contestResultStore";
 import { type ContainerHook } from "@/utils/containerHook";
 
-import { type ContestSimulateButtonVariantProps } from "./ContestSimulateButton.variants";
+import { contestSimulateButtonVariants } from "./ContestSimulateButton.variants";
 
 interface State {
   isLoading: boolean;
-  variantProps: ContestSimulateButtonVariantProps;
+  tvSlots: {
+    startContent: () => string;
+  };
 }
 
 interface Action {
-  SimulateContest: () => void;
+  simulateContest: () => void;
 }
 
 const useContestSimulateButton: ContainerHook<State, Action> = () => {
@@ -17,15 +19,17 @@ const useContestSimulateButton: ContainerHook<State, Action> = () => {
 
   const SimulateContestAsync = useContestResultStore((state) => state.SimulateContestAsync);
 
+  const { startContent } = contestSimulateButtonVariants({ isLoading });
+
   return {
     state: {
       isLoading,
-      variantProps: {
-        isLoading,
+      tvSlots: {
+        startContent,
       },
     },
     action: {
-      SimulateContest: () => void SimulateContestAsync(),
+      simulateContest: () => void SimulateContestAsync(),
     },
   };
 };

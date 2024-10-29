@@ -6,17 +6,14 @@ import { PortalClientSideBar } from "@/components/model/PortalClientSideBar";
 import { VStack, HStack } from "@/components/ui";
 
 import { useRootLayout } from "./RootLayout.hooks";
-import { rootLayoutVariants } from "./RootLayout.variants";
 
 const RootLayout = (): JSX.Element => {
   const {
-    state: { showWindowBorder },
+    state: { tvSlots },
   } = useRootLayout();
 
-  const { base } = rootLayoutVariants({ showWindowBorder });
-
   return (
-    <VStack className={base()}>
+    <VStack className={tvSlots.base()}>
       <PortalClientHeader />
       <HStack grow="1" className="overflow-hidden overscroll-y-auto">
         <HStack className="sticky top-0 z-10">

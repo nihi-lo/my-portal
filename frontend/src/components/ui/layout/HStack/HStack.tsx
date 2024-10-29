@@ -1,6 +1,7 @@
 import React from "react";
 
-import { type HStackVariantProps, hStackVariants } from "./HStack.variants";
+import { useHStack } from "./HStack.hooks";
+import { type HStackVariantProps } from "./HStack.variants";
 
 interface HStackProps
   extends Omit<React.ComponentPropsWithoutRef<"div" | "main">, "style">,
@@ -20,15 +21,16 @@ const HStack = (props: HStackProps): JSX.Element => {
     pt,
     grow,
     children,
-    className,
+    className: extendClassName,
     as: Tag = "div",
     ...otherProps
   } = props;
-
-  const { base } = hStackVariants({ align, justify, wrap, gap, p, px, py, pt, grow });
+  const {
+    state: { tvSlots },
+  } = useHStack({ align, justify, wrap, gap, p, px, py, pt, grow });
 
   return (
-    <Tag className={base({ className })} {...otherProps}>
+    <Tag className={tvSlots.base(extendClassName)} {...otherProps}>
       {children}
     </Tag>
   );

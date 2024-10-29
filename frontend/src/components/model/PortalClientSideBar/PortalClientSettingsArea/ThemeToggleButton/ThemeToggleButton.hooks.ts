@@ -5,21 +5,36 @@ import { RiMoonLine, RiQuestionLine, RiSunLine } from "react-icons/ri";
 import { type ContainerHook } from "@/utils/containerHook";
 
 import { type Theme } from "./ThemeToggleButton.types";
+import {
+  type ThemeToggleButtonVariantProps,
+  themeToggleButtonVariants,
+} from "./ThemeToggleButton.variants";
 
 interface State {
   theme: Theme | undefined;
   isLoading: boolean;
+  tvSlots: {
+    themeIcon: () => string;
+  };
 }
 
 interface Action {
   switchTheme: (newThemeKey: string) => void;
 }
 
-const useThemeToggleButton: ContainerHook<State, Action> = () => {
+interface Argument {
+  size: ThemeToggleButtonVariantProps["size"];
+}
+
+const useThemeToggleButton: ContainerHook<State, Action, Argument> = (args) => {
+  const { size = "md" } = args;
+
   const { theme: currentTheme, systemTheme, setTheme: setCurrentTheme } = useTheme();
 
   const [theme, setTheme] = useState<Theme | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
+
+  const { themeIcon } = themeToggleButtonVariants({ size });
 
   useEffect(() => {
     setIsLoading(true);
@@ -49,6 +64,9 @@ const useThemeToggleButton: ContainerHook<State, Action> = () => {
     state: {
       theme,
       isLoading,
+      tvSlots: {
+        themeIcon,
+      },
     },
     action: {
       switchTheme,

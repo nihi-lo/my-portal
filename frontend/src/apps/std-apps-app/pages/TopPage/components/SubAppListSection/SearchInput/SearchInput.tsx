@@ -2,7 +2,6 @@ import { Button, Chip, Input, type InputProps } from "@nextui-org/react";
 import { RiSearchLine } from "react-icons/ri";
 
 import { useSearchInput } from "./SearchInput.hooks";
-import { searchInputVariants } from "./SearchInput.variants";
 
 interface SearchInputProps extends Omit<InputProps, "isClearable"> {
   onSearch?: (searchValue: string) => void;
@@ -11,14 +10,9 @@ interface SearchInputProps extends Omit<InputProps, "isClearable"> {
 const SearchInput = (props: SearchInputProps): JSX.Element => {
   const { color, size, onSearch, ...otherProps } = props;
   const {
-    state: { inputRef, isComposing, searchValue },
+    state: { inputRef, isComposing, searchValue, tvSlots },
     action: { beginTextInput, changeInputValue, endTextInput },
-  } = useSearchInput();
-
-  const { endContentChip, searchIcon } = searchInputVariants({
-    showSearchChip: searchValue !== "",
-    size: size,
-  });
+  } = useSearchInput({ size });
 
   return (
     <Input
@@ -34,13 +28,13 @@ const SearchInput = (props: SearchInputProps): JSX.Element => {
           onKeyDown={(e) =>
             e.key === "Enter" && !isComposing && onSearch?.(inputRef.current!.value)
           }
-          className={endContentChip()}
+          className={tvSlots.endContentChip()}
         >
           Enterで検索
         </Chip>
       }
       size={size}
-      startContent={<RiSearchLine className={searchIcon()} />}
+      startContent={<RiSearchLine className={tvSlots.searchIcon()} />}
       value={searchValue}
       onCompositionEnd={endTextInput}
       onCompositionStart={beginTextInput}

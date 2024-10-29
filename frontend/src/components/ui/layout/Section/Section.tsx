@@ -2,7 +2,8 @@ import { Divider } from "@nextui-org/react";
 
 import { Heading, HStack } from "@/components/ui";
 
-import { type SectionVariantProps, sectionVariants } from "./Section.variants";
+import { useSection } from "./Section.hooks";
+import { type SectionVariantProps } from "./Section.variants";
 
 interface SectionProps
   extends Omit<React.ComponentPropsWithoutRef<"section">, "className" | "style">,
@@ -14,11 +15,12 @@ interface SectionProps
 
 const Section = (props: SectionProps): JSX.Element => {
   const { endContent, headingAs, title, p, px, py, pt, grow, children, ...otherProps } = props;
-
-  const { base } = sectionVariants({ p, px, py, pt, grow });
+  const {
+    state: { tvSlots },
+  } = useSection({ p, px, py, pt, grow });
 
   return (
-    <section className={base()} {...otherProps}>
+    <section className={tvSlots.base()} {...otherProps}>
       <HStack align="center" justify="between" gap="md" className="min-h-8">
         <Heading as={headingAs} className="truncate text-2xl font-bold">
           {title}

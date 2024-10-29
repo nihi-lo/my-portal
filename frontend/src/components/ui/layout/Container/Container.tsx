@@ -1,4 +1,5 @@
-import { type ContainerVariantProps, containerVariants } from "./Container.variants";
+import { useContainer } from "./Container.hooks";
+import { type ContainerVariantProps } from "./Container.variants";
 
 interface ContainerProps
   extends Omit<React.ComponentPropsWithoutRef<"div" | "main">, "style">,
@@ -7,12 +8,23 @@ interface ContainerProps
 }
 
 const Container = (props: ContainerProps): JSX.Element => {
-  const { p, px, py, pt, grow, children, className, as: Tag = "div", ...otherProps } = props;
-
-  const { base } = containerVariants({ p, px, py, pt, grow });
+  const {
+    p,
+    px,
+    py,
+    pt,
+    grow,
+    children,
+    className: extendClassName,
+    as: Tag = "div",
+    ...otherProps
+  } = props;
+  const {
+    state: { tvSlots },
+  } = useContainer({ p, px, py, pt, grow });
 
   return (
-    <Tag className={base({ className })} {...otherProps}>
+    <Tag className={tvSlots.base(extendClassName)} {...otherProps}>
       {children}
     </Tag>
   );
