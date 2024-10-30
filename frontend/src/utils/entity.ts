@@ -6,7 +6,7 @@ abstract class Entity<Symbol extends symbol, EntityId extends IEntityId, Attribu
   readonly #id: EntityId;
   #attrs: Attribute;
 
-  constructor({ id, attrs }: { id: EntityId; attrs: Attribute }) {
+  constructor(id: EntityId, attrs: Attribute) {
     this.#id = id;
     this.#attrs = attrs;
   }
