@@ -1,6 +1,8 @@
-import { type BrandType } from "@/utils/brandType";
+import { type Brand } from "@/utils/brand";
 
-type Session = BrandType<
+declare const _symbol: unique symbol;
+
+type Session = Brand<
   {
     readonly user: {
       readonly name: string;
@@ -8,7 +10,7 @@ type Session = BrandType<
       readonly image: string;
     };
   },
-  "Session"
+  typeof _symbol
 >;
 
 export { type Session };

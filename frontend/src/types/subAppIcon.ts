@@ -1,12 +1,14 @@
-import { type BrandType } from "@/utils/brandType";
+import { type Brand } from "@/utils/brand";
 
-type SubAppIcon = BrandType<
+declare const _symbol: unique symbol;
+
+type SubAppIcon = Brand<
   {
     readonly smallContent: React.ReactNode;
     readonly mediumContent: React.ReactNode;
     readonly largeContent: React.ReactNode;
   },
-  "SubAppIcon"
+  typeof _symbol
 >;
 
 export { type SubAppIcon };

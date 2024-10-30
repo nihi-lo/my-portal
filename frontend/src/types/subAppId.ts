@@ -1,5 +1,7 @@
-import { type BrandType } from "@/utils/brandType";
+import { type Brand } from "@/utils/brand";
 
-type SubAppId = BrandType<string, "SubAppId">;
+declare const _symbol: unique symbol;
+
+type SubAppId = Brand<string, typeof _symbol>;
 
 export { type SubAppId };
