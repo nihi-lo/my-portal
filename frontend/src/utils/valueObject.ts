@@ -1,13 +1,17 @@
 import { type ReadonlyDeep } from "type-fest";
 
-import { type Brand } from "@/utils/brand";
+import { BrandClass } from "@/utils/brandClass";
 import { deepFreeze } from "@/utils/deepFreeze";
 
-abstract class ValueObject<Symbol extends symbol, Attribute extends object> {
-  readonly #brand?: Brand<string, Symbol>;
+abstract class ValueObject<
+  Symbol extends symbol,
+  Attribute extends object,
+> extends BrandClass<Symbol> {
   readonly #attrs: ReadonlyDeep<Attribute>;
 
   constructor(attrs: Attribute) {
+    super();
+
     this.#attrs = deepFreeze(attrs);
   }
 

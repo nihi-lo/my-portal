@@ -1,12 +1,17 @@
-import { type Brand } from "@/utils/brand";
+import { BrandClass } from "@/utils/brandClass";
 import { type IEntityId } from "@/utils/entityId";
 
-abstract class Entity<Symbol extends symbol, EntityId extends IEntityId, Attribute extends object> {
-  readonly #brand?: Brand<string, Symbol>;
+abstract class Entity<
+  Symbol extends symbol,
+  EntityId extends IEntityId,
+  Attribute extends object,
+> extends BrandClass<Symbol> {
   readonly #id: EntityId;
   #attrs: Attribute;
 
   constructor(id: EntityId, attrs: Attribute) {
+    super();
+
     this.#id = id;
     this.#attrs = attrs;
   }
