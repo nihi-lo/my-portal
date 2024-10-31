@@ -29,7 +29,12 @@ abstract class Entity<
       return false;
     }
 
-    return this.id === object.id;
+    /* HACK:
+     * Entityの同一性を確認するためにEntityのID同士を比較する必要があるが、object.idはany型であり、object.id.valueのように呼び出せない。
+     * しかし、objectがEntityのインスタンスであるならば、object.idはIEntityIdを実装しており、valueにアクセス可能である。
+     * したがって、型アサーションを用いつつID同士を比較する。
+     */
+    return this.id.value === (object.id as IEntityId).value;
   }
 }
 
