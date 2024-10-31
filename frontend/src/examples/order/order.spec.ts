@@ -1,7 +1,7 @@
 import { Order } from "./index";
 
-describe("注文", () => {
-  it("新しい注文を作成", () => {
+describe("注文エンティティ", () => {
+  it("注文を新規作成", () => {
     const orderAt = new Date();
     const order = Order.create({
       orderAt,
