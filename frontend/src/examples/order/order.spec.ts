@@ -7,8 +7,6 @@ describe("注文エンティティ", () => {
       orderAt,
     });
 
-    console.log(order.orderAt);
-
-    expect(order.orderAt).toEqual(orderAt);
+    expect.soft(order.orderAt).toStrictEqual(orderAt);
   });
 });
