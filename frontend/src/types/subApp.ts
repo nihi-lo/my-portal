@@ -1,16 +1,16 @@
 import { type SubAppIcon } from "@/types/subAppIcon";
 import { type SubAppId } from "@/types/subAppId";
 import { type SubAppMetadata } from "@/types/subAppMetadata";
-import { type Brand } from "@/utils/brand";
+import { type BrandType } from "@/utils/brandType";
 
 declare const _symbol: unique symbol;
 
-type SubApp = Brand<
+type SubApp = BrandType<
   {
-    readonly id: SubAppId;
-    readonly metadata: SubAppMetadata;
-    readonly icon: SubAppIcon;
-    readonly routeContent: React.ReactNode;
+    id: SubAppId;
+    metadata: SubAppMetadata;
+    icon: SubAppIcon;
+    routeContent: React.ReactNode;
   },
   typeof _symbol
 >;

@@ -1,13 +1,13 @@
-import { type Brand } from "@/utils/brand";
+import { type BrandType } from "@/utils/brandType";
 
 declare const _symbol: unique symbol;
 
-type Session = Brand<
+type Session = BrandType<
   {
-    readonly user: {
-      readonly name: string;
-      readonly email: string;
-      readonly image: string;
+    user: {
+      name: string;
+      email: string;
+      image: string;
     };
   },
   typeof _symbol

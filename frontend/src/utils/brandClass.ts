@@ -1,10 +1,10 @@
-import { type Brand } from "@/utils/brand";
+import { type BrandType } from "@/utils/brandType";
 
 abstract class BrandClass<Symbol extends symbol> {
-  readonly #brand: Brand<string, Symbol>;
+  readonly #brand: BrandType<string, Symbol>;
 
   constructor() {
-    this.#brand = "BrandClass" as Brand<string, Symbol>;
+    this.#brand = "BrandClass" as BrandType<string, Symbol>;
   }
 }
 

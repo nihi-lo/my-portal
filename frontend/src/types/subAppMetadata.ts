@@ -1,11 +1,11 @@
-import { type Brand } from "@/utils/brand";
+import { type BrandType } from "@/utils/brandType";
 
 declare const _symbol: unique symbol;
 
-type SubAppMetadata = Brand<
+type SubAppMetadata = BrandType<
   {
-    readonly title: string;
-    readonly description: string;
+    title: string;
+    description: string;
   },
   typeof _symbol
 >;
