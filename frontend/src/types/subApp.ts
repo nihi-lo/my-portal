@@ -3,7 +3,7 @@ import { type SubAppId } from "@/types/subAppId";
 import { type SubAppMetadata } from "@/types/subAppMetadata";
 import { type BrandType } from "@/utils/brandType";
 
-declare const _symbol: unique symbol;
+declare const _subAppSymbol: unique symbol;
 
 type SubApp = BrandType<
   {
@@ -12,7 +12,7 @@ type SubApp = BrandType<
     icon: SubAppIcon;
     routeContent: React.ReactNode;
   },
-  typeof _symbol
+  typeof _subAppSymbol
 >;
 
 export { type SubApp };

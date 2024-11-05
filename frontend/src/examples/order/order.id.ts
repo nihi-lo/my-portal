@@ -1,8 +1,8 @@
 import { type EntityIdAttribute, EntityId } from "@/utils/entityId";
 
-declare const _symbol: unique symbol;
+declare const _orderIdSymbol: unique symbol;
 
-class OrderId extends EntityId<typeof _symbol> {
+class OrderId extends EntityId<typeof _orderIdSymbol> {
   private constructor(value?: EntityIdAttribute["value"]) {
     super(value ? { value } : undefined);
   }

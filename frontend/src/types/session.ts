@@ -1,6 +1,6 @@
 import { type BrandType } from "@/utils/brandType";
 
-declare const _symbol: unique symbol;
+declare const _sessionSymbol: unique symbol;
 
 type Session = BrandType<
   {
@@ -10,7 +10,7 @@ type Session = BrandType<
       image: string;
     };
   },
-  typeof _symbol
+  typeof _sessionSymbol
 >;
 
 export { type Session };

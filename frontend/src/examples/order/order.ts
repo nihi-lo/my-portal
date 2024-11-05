@@ -3,9 +3,9 @@ import { Entity } from "@/utils/entity";
 import { type OrderAttribute as Attribute } from "./order.attr";
 import { OrderId as Id } from "./order.id";
 
-declare const _symbol: unique symbol;
+declare const _orderSymbol: unique symbol;
 
-class Order extends Entity<typeof _symbol, Id, Attribute> {
+class Order extends Entity<typeof _orderSymbol, Id, Attribute> {
   private constructor(id: Id, attrs: Attribute) {
     super(id, attrs);
   }

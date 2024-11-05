@@ -2,9 +2,9 @@ import { ValueObject } from "@/utils/valueObject";
 
 import { type FullNameAttribute as Attribute } from "./fullName.attr";
 
-declare const _symbol: unique symbol;
+declare const _fullNameSymbol: unique symbol;
 
-export class FullName extends ValueObject<typeof _symbol, Attribute> {
+export class FullName extends ValueObject<typeof _fullNameSymbol, Attribute> {
   private constructor(attrs: Attribute) {
     super(attrs);
 
