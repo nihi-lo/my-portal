@@ -14,18 +14,18 @@ const subApp = {
   },
   icon: {
     smallContent: (
-      <HStack align="center" justify="center" className="size-6 rounded-large bg-content2">
-        <div className="text-sm text-content2-foreground">S</div>
+      <HStack align="center" justify="center" className="size-6 rounded-large bg-content3">
+        <div className="text-sm text-content3-foreground">S</div>
       </HStack>
     ),
     mediumContent: (
-      <HStack align="center" justify="center" className="size-12 rounded-large bg-content2">
-        <div className="text-3xl text-content2-foreground">S</div>
+      <HStack align="center" justify="center" className="size-12 rounded-large bg-content3">
+        <div className="text-3xl text-content3-foreground">S</div>
       </HStack>
     ),
     largeContent: (
-      <HStack align="center" justify="center" className="size-24 rounded-large bg-content2">
-        <div className="text-6xl text-content2-foreground">S</div>
+      <HStack align="center" justify="center" className="size-24 rounded-large bg-content3">
+        <div className="text-6xl text-content3-foreground">S</div>
       </HStack>
     ),
   },
