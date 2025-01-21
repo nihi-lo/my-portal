@@ -4,7 +4,7 @@ import { MatchResultSection } from "./components/MatchResultSection";
 import { UnitFormationSection } from "./components/UnitFormationSection";
 import { TopPageUseCaseProvider } from "./contexts/TopPageUseCaseContext";
 
-const TopPage = (): JSX.Element => {
+const TopPage = (): React.JSX.Element => {
   return (
     <TopPageUseCaseProvider>
       <Container as="main">

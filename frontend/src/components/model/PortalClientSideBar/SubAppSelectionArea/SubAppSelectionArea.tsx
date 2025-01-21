@@ -9,7 +9,7 @@ import { SubAppSelectIcon } from "./SubAppSelectIcon";
 import { useSubAppSelectionArea } from "./SubAppSelectionArea.hooks";
 import { SubAppSortableSelectMenuItem } from "./SubAppSortableSelectMenuItem";
 
-const SubAppSelectionArea = (): JSX.Element => {
+const SubAppSelectionArea = (): React.JSX.Element => {
   const {
     state: {
       activeApp,

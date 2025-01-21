@@ -13,7 +13,7 @@ interface SectionProps
   title: string;
 }
 
-const Section = (props: SectionProps): JSX.Element => {
+const Section = (props: SectionProps): React.JSX.Element => {
   const { endContent, headingAs, title, p, px, py, pt, grow, children, ...otherProps } = props;
   const {
     state: { tvSlots },

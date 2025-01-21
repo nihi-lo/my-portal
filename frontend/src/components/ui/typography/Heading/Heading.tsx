@@ -7,7 +7,7 @@ interface HeadingProps
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-const Heading = (props: HeadingProps): JSX.Element => {
+const Heading = (props: HeadingProps): React.JSX.Element => {
   const { as: Tag = "h1", children, className: extendClassName, ...otherProps } = props;
   const {
     state: { tvSlots },

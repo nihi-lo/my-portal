@@ -11,7 +11,9 @@ interface SubAppSortableSelectMenuItemProps {
   subAppId: SubAppId;
 }
 
-const SubAppSortableSelectMenuItem = (props: SubAppSortableSelectMenuItemProps): JSX.Element => {
+const SubAppSortableSelectMenuItem = (
+  props: SubAppSortableSelectMenuItemProps,
+): React.JSX.Element => {
   const { isSelected = false, subAppId } = props;
   const {
     state: { attributes, isDragging, listeners, subApp, transform, transition },

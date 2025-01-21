@@ -2,7 +2,7 @@ import { Dropdown, DropdownTrigger, Button, DropdownMenu, DropdownItem } from "@
 
 import { usePlanDropdown } from "./PlanDropdown.hooks";
 
-const PlanDropdown = (): JSX.Element => {
+const PlanDropdown = (): React.JSX.Element => {
   const {
     state: { dropdownItemList, selectedKeys, selectedValue },
     action: { setSelectedKeys },

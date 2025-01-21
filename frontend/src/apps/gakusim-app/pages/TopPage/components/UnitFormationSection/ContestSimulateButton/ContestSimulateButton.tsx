@@ -3,7 +3,7 @@ import { RiArrowRightLine } from "react-icons/ri";
 
 import { useContestSimulateButton } from "./ContestSimulateButton.hooks";
 
-const ContestSimulateButton = (): JSX.Element => {
+const ContestSimulateButton = (): React.JSX.Element => {
   const {
     state: { isLoading, tvSlots },
     action: { simulateContest },

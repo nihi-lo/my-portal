@@ -7,7 +7,9 @@ interface SubAppOverlaySelectMenuItemProps {
   subAppId: SubAppId;
 }
 
-const SubAppOverlaySelectMenuItem = (props: SubAppOverlaySelectMenuItemProps): JSX.Element => {
+const SubAppOverlaySelectMenuItem = (
+  props: SubAppOverlaySelectMenuItemProps,
+): React.JSX.Element => {
   const { subAppId } = props;
   const {
     state: { subApp },

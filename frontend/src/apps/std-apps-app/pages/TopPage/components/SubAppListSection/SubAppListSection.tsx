@@ -7,7 +7,7 @@ import { Section, HStack } from "@/components/ui";
 import { SearchInput } from "./SearchInput";
 import { useSubAppListSection } from "./SubAppListSection.hooks";
 
-const SubAppListSection = (): JSX.Element => {
+const SubAppListSection = (): React.JSX.Element => {
   const {
     state: { listItems, searchResultMessage },
     action: { searchApplication },

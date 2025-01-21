@@ -9,7 +9,7 @@ interface TeamMemberCardProps extends VariantProps {
   children?: React.ReactNode | React.ReactNode[];
 }
 
-const TeamMemberCard = ({ children, ...props }: TeamMemberCardProps): JSX.Element => {
+const TeamMemberCard = ({ children, ...props }: TeamMemberCardProps): React.JSX.Element => {
   /* ClassName variants */
   const { base } = variants();
 

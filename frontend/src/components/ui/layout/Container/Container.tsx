@@ -7,7 +7,7 @@ interface ContainerProps
   as?: "div" | "main";
 }
 
-const Container = (props: ContainerProps): JSX.Element => {
+const Container = (props: ContainerProps): React.JSX.Element => {
   const {
     p,
     px,

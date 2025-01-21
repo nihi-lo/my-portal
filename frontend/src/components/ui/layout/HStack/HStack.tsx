@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useHStack } from "./HStack.hooks";
 import { type HStackVariantProps } from "./HStack.variants";
 
@@ -9,7 +7,7 @@ interface HStackProps
   as?: "div" | "main";
 }
 
-const HStack = (props: HStackProps): JSX.Element => {
+const HStack = (props: HStackProps): React.JSX.Element => {
   const {
     align,
     justify,

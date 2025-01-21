@@ -5,7 +5,7 @@ import { type ContainerHook } from "@/utils/containerHook";
 import { type SearchInputVariantProps, searchInputVariants } from "./SearchInput.variants";
 
 interface State {
-  inputRef: React.RefObject<HTMLInputElement>;
+  inputRef: React.RefObject<HTMLInputElement | null>;
   isComposing: boolean;
   searchValue: string;
   tvSlots: {

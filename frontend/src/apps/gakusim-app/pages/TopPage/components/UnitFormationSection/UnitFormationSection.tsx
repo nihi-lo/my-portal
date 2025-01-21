@@ -6,7 +6,7 @@ import { HStack, Section, VStack } from "@/components/ui";
 import { ContestSimulateButton } from "./ContestSimulateButton";
 import { PlanDropdown } from "./PlanDropdown";
 
-const UnitFormationSection = (): JSX.Element => {
+const UnitFormationSection = (): React.JSX.Element => {
   return (
     <Section headingAs="h2" title="ユニット編成">
       <VStack align="center" gap="md">

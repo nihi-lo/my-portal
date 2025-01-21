@@ -11,7 +11,7 @@ interface SubAppSelectIconProps extends SubAppSelectIconVariantProps {
   tooltipContent?: string;
 }
 
-const SubAppSelectIcon = (props: SubAppSelectIconProps): JSX.Element => {
+const SubAppSelectIcon = (props: SubAppSelectIconProps): React.JSX.Element => {
   const {
     appIconContent,
     disableAnimation = false,

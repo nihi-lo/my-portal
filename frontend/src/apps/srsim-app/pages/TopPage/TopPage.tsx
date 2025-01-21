@@ -10,7 +10,7 @@ import {
   TeamMemberCardBody,
 } from "./components/model/teamMember";
 
-const TopPage = (): JSX.Element => {
+const TopPage = (): React.JSX.Element => {
   // prettier-ignore
   const characters: {
     id: string;

@@ -3,7 +3,7 @@ import { RiCloseLine, RiSubtractLine } from "react-icons/ri";
 
 import { useWindowControlButtonGroup } from "./WindowControlButtonGroup.hooks";
 
-const WindowControlButtonGroup = (): JSX.Element => {
+const WindowControlButtonGroup = (): React.JSX.Element => {
   const {
     state: { windowToggleButton },
     action: { minimizeWindow, toggleWindowMaximize, quitWindow },

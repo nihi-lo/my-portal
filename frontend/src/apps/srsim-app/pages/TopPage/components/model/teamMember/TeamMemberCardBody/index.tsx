@@ -10,7 +10,7 @@ import {
 
 type TeamMemberCardBodyProps = VariantProps;
 
-const TeamMemberCardBody = ({ ...props }: TeamMemberCardBodyProps): JSX.Element => {
+const TeamMemberCardBody = ({ ...props }: TeamMemberCardBodyProps): React.JSX.Element => {
   /* ClassName variants */
   const { base } = variants();
 

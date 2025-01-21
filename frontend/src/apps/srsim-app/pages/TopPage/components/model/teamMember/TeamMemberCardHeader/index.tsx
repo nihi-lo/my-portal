@@ -19,7 +19,7 @@ const TeamMemberCardHeader = ({
   headerImageSrc,
   rarity,
   onOpenModal,
-}: TeamMemberCardHeaderProps): JSX.Element => {
+}: TeamMemberCardHeaderProps): React.JSX.Element => {
   /* ClassName variants */
   const { base, button, icon } = variants({ rarity });
 

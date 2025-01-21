@@ -17,7 +17,7 @@ interface SubAppOperateDropdownProps {
   triggerContent: React.ReactNode;
 }
 
-const SubAppOperateDropdown = (props: SubAppOperateDropdownProps): JSX.Element => {
+const SubAppOperateDropdown = (props: SubAppOperateDropdownProps): React.JSX.Element => {
   const { subAppId, triggerContent } = props;
   const {
     state: { disabledDropdownItemKeys, isSubAppAboutModalOpen },

@@ -5,7 +5,7 @@ type PortalClientBodyProps = PortalClientBodyVariantProps & {
   children: React.ReactNode;
 };
 
-const PortalClientBody = (props: PortalClientBodyProps): JSX.Element => {
+const PortalClientBody = (props: PortalClientBodyProps): React.JSX.Element => {
   const { children } = props;
   const {
     state: { tvSlots },

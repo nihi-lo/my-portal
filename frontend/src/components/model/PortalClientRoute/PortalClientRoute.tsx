@@ -5,7 +5,7 @@ import { NotFoundPage } from "@/pages/NotFoundPage";
 
 import { usePortalClientRoute } from "./PortalClientRoute.hooks";
 
-const PortalClientRoute = (): JSX.Element => {
+const PortalClientRoute = (): React.JSX.Element => {
   const {
     state: { rootRouteContent, routeList },
   } = usePortalClientRoute();

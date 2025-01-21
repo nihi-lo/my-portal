@@ -41,7 +41,7 @@ const TeamMemberSelectionModal = ({
   isOpen,
   onOpenChange,
   onSelectItem,
-}: TeamMemberSelectionModalProps): JSX.Element => {
+}: TeamMemberSelectionModalProps): React.JSX.Element => {
   /* ClassName variants */
   const { base, content, header, body, characterRadioButtonRoot, characterRadioButton, footer } =
     variants();

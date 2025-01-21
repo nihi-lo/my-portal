@@ -5,7 +5,7 @@ import { type ThemeToggleButtonVariantProps } from "./ThemeToggleButton.variants
 
 type ThemeToggleButtonProps = ThemeToggleButtonVariantProps;
 
-const ThemeToggleButton = (props: ThemeToggleButtonProps): JSX.Element => {
+const ThemeToggleButton = (props: ThemeToggleButtonProps): React.JSX.Element => {
   const { size } = props;
   const {
     state: { theme, isLoading, tvSlots },

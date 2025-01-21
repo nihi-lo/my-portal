@@ -17,7 +17,7 @@ interface SubAppAboutModalProps {
   onClose: () => void;
 }
 
-const SubAppAboutModal = (props: SubAppAboutModalProps): JSX.Element => {
+const SubAppAboutModal = (props: SubAppAboutModalProps): React.JSX.Element => {
   const { isOpen, subAppId, onClose } = props;
   const {
     state: { title },

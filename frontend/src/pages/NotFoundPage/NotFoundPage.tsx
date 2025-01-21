@@ -3,7 +3,7 @@ import { RiAlertFill } from "react-icons/ri";
 
 import { VStack, HStack } from "@/components/ui";
 
-const NotFoundPage = (): JSX.Element => {
+const NotFoundPage = (): React.JSX.Element => {
   return (
     <VStack as="main" align="center" justify="center" gap="md" className="h-full">
       <HStack align="center" gap="sm">

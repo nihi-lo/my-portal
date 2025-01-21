@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useVStack } from "./VStack.hooks";
 import { type VStackVariantProps } from "./VStack.variants";
 
@@ -9,7 +7,7 @@ interface VStackProps
   as?: "aside" | "div" | "main";
 }
 
-const VStack = (props: VStackProps): JSX.Element => {
+const VStack = (props: VStackProps): React.JSX.Element => {
   const {
     align,
     justify,

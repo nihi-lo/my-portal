@@ -7,7 +7,7 @@ interface PortalClientProvidersProps {
   children: React.ReactNode;
 }
 
-const PortalClientProviders = (props: PortalClientProvidersProps): JSX.Element => {
+const PortalClientProviders = (props: PortalClientProvidersProps): React.JSX.Element => {
   const { children } = props;
   const {
     action: { navigate },

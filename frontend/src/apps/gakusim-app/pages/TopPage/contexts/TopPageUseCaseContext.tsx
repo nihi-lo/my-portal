@@ -9,7 +9,7 @@ interface TopPageUseCaseProviderProps {
   value?: TopPageUseCases;
 }
 
-const TopPageUseCaseProvider = (props: TopPageUseCaseProviderProps): JSX.Element => {
+const TopPageUseCaseProvider = (props: TopPageUseCaseProviderProps): React.JSX.Element => {
   const { children, value = {} } = props;
 
   return <UseCaseContext.Provider value={value}>{children}</UseCaseContext.Provider>;

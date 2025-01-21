@@ -7,7 +7,7 @@ interface SearchInputProps extends Omit<InputProps, "isClearable"> {
   onSearch?: (searchValue: string) => void;
 }
 
-const SearchInput = (props: SearchInputProps): JSX.Element => {
+const SearchInput = (props: SearchInputProps): React.JSX.Element => {
   const { color, size, onSearch, ...otherProps } = props;
   const {
     state: { inputRef, isComposing, searchValue, tvSlots },
@@ -24,9 +24,9 @@ const SearchInput = (props: SearchInputProps): JSX.Element => {
           color={color}
           size={size}
           variant="solid"
-          onClick={() => onSearch?.(inputRef.current!.value)}
+          onClick={() => onSearch?.(inputRef.current?.value ?? "")}
           onKeyDown={(e) =>
-            e.key === "Enter" && !isComposing && onSearch?.(inputRef.current!.value)
+            e.key === "Enter" && !isComposing && onSearch?.(inputRef.current?.value ?? "")
           }
           className={tvSlots.endContentChip()}
         >
@@ -38,7 +38,9 @@ const SearchInput = (props: SearchInputProps): JSX.Element => {
       value={searchValue}
       onCompositionEnd={endTextInput}
       onCompositionStart={beginTextInput}
-      onKeyDown={(e) => e.key === "Enter" && !isComposing && onSearch?.(inputRef.current!.value)}
+      onKeyDown={(e) =>
+        e.key === "Enter" && !isComposing && onSearch?.(inputRef.current?.value ?? "")
+      }
       onValueChange={changeInputValue}
       {...otherProps}
     />

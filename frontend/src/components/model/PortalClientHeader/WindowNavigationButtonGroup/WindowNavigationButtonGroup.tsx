@@ -3,7 +3,7 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 import { useWindowNavigationButtonGroup } from "./WindowNavigationButtonGroup.hooks";
 
-const WindowNavigationButtonGroup = (): JSX.Element => {
+const WindowNavigationButtonGroup = (): React.JSX.Element => {
   const {
     state: { pageBackButton, pageForwardButton },
     action: { backPage, forwardPage },

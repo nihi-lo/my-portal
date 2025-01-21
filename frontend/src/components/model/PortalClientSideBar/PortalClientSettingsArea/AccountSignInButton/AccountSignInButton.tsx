@@ -3,7 +3,7 @@ import { RiAccountBoxLine } from "react-icons/ri";
 
 import { useAccountSignInButton } from "./AccountSignInButton.hooks";
 
-const AccountSignInButton = (): JSX.Element => {
+const AccountSignInButton = (): React.JSX.Element => {
   const {
     state: { isAuthenticated, user },
     action: { signIn },

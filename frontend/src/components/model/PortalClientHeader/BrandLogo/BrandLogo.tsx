@@ -4,7 +4,7 @@ import { HStack } from "@/components/ui";
 
 import { useBrandLogo } from "./BrandLogo.hooks";
 
-const BrandLogo = (): JSX.Element => {
+const BrandLogo = (): React.JSX.Element => {
   const {
     action: { quitWindow },
   } = useBrandLogo();

@@ -9,7 +9,7 @@ import { usePortalClientHeader } from "./PortalClientHeader.hooks";
 import { WindowControlButtonGroup } from "./WindowControlButtonGroup";
 import { WindowNavigationButtonGroup } from "./WindowNavigationButtonGroup";
 
-const PortalClientHeader = (): JSX.Element => {
+const PortalClientHeader = (): React.JSX.Element => {
   const {
     state: {
       activeAppIconContent,

@@ -7,7 +7,7 @@ import { VStack, HStack } from "@/components/ui";
 
 import { useRootLayout } from "./RootLayout.hooks";
 
-const RootLayout = (): JSX.Element => {
+const RootLayout = (): React.JSX.Element => {
   const {
     state: { tvSlots },
   } = useRootLayout();
