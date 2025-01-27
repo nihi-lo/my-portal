@@ -1,3 +1,3 @@
-type BrandType<T, S extends symbol> = T & { [K in S]: never };
+type BrandType<T, S extends symbol> = T & Record<S, never>;
 
 export { type BrandType };
