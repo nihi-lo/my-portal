@@ -8,7 +8,7 @@ import {
   ModalHeader,
   ScrollShadow,
   Image,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useState } from "react";
 import { TbRefresh } from "react-icons/tb";
 

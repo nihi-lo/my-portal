@@ -1,4 +1,4 @@
-import { Button, Divider } from "@nextui-org/react";
+import { Button, Divider } from "@heroui/react";
 import { RiMore2Fill } from "react-icons/ri";
 
 import { SubAppOperateDropdown } from "@/components/model/SubAppOperateDropdown";

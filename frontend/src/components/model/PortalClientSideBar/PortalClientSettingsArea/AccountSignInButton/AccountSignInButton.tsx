@@ -1,4 +1,4 @@
-import { Button, Image, Tooltip } from "@nextui-org/react";
+import { Button, Image, Tooltip } from "@heroui/react";
 import { RiAccountBoxLine } from "react-icons/ri";
 
 import { useAccountSignInButton } from "./AccountSignInButton.hooks";

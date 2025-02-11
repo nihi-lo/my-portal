@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardHeader, Divider, Image } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Divider, Image } from "@heroui/react";
 
 import { assets } from "@/apps/gakusim-app/pages/TopPage/assets";
 import { HStack, Section, VStack } from "@/components/ui";

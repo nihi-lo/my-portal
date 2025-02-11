@@ -1,4 +1,4 @@
-import { Button, ButtonGroup } from "@nextui-org/react";
+import { Button, ButtonGroup } from "@heroui/react";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 import { useWindowNavigationButtonGroup } from "./WindowNavigationButtonGroup.hooks";

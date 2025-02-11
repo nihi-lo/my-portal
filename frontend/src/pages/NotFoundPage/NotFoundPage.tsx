@@ -1,4 +1,4 @@
-import { Link } from "@nextui-org/react";
+import { Link } from "@heroui/react";
 import { RiAlertFill } from "react-icons/ri";
 
 import { VStack, HStack } from "@/components/ui";

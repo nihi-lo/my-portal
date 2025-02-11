@@ -1,4 +1,4 @@
-import { Dropdown, DropdownTrigger, Button, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import { Dropdown, DropdownTrigger, Button, DropdownMenu, DropdownItem } from "@heroui/react";
 
 import { usePlanDropdown } from "./PlanDropdown.hooks";
 

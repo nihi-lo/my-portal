@@ -1,4 +1,4 @@
-import { useDisclosure } from "@nextui-org/react";
+import { useDisclosure } from "@heroui/react";
 
 import { assets } from "@/apps/srsim-app/assets";
 import { Container, HStack, Section } from "@/components/ui";

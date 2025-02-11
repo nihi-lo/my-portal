@@ -1,6 +1,6 @@
 import { DndContext, closestCenter, DragOverlay } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { Divider, Link } from "@nextui-org/react";
+import { Divider, Link } from "@heroui/react";
 
 import { VStack } from "@/components/ui";
 

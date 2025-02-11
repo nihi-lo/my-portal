@@ -38,8 +38,8 @@ const useWindowNavigationButtonGroup: ContainerHook<State, Action> = () => {
       },
     },
     action: {
-      backPage: () => navigate(-1),
-      forwardPage: () => navigate(1),
+      backPage: () => void navigate(-1),
+      forwardPage: () => void navigate(1),
     },
   };
 };

@@ -1,4 +1,4 @@
-import { CardHeader, Button, Image } from "@nextui-org/react";
+import { CardHeader, Button, Image } from "@heroui/react";
 import { TbRefresh } from "react-icons/tb";
 
 import { HStack } from "@/components/ui";

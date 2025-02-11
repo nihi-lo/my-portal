@@ -60,7 +60,7 @@ const usePortalClientProviders: ContainerHook<State, Action> = () => {
   return {
     state: undefined,
     action: {
-      navigate,
+      navigate: (path) => void navigate(path),
     },
   };
 };

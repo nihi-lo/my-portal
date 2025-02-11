@@ -1,4 +1,4 @@
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import { ThemeProvider } from "next-themes";
 
 import { usePortalClientProviders } from "./PortalClientProviders.hooks";
@@ -14,11 +14,11 @@ const PortalClientProviders = (props: PortalClientProvidersProps): React.JSX.Ele
   } = usePortalClientProviders();
 
   return (
-    <NextUIProvider locale="ja-JP" navigate={navigate}>
+    <HeroUIProvider locale="ja-JP" navigate={navigate}>
       <ThemeProvider attribute="class" defaultTheme="system" storageKey="portal-client.theme">
         {children}
       </ThemeProvider>
-    </NextUIProvider>
+    </HeroUIProvider>
   );
 };
 

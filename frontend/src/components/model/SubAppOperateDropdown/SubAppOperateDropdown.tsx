@@ -4,7 +4,7 @@ import {
   DropdownMenu,
   DropdownItem,
   DropdownSection,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { RiInformation2Line, RiAddLine, RiSubtractLine } from "react-icons/ri";
 
 import { type SubAppId } from "@/types/subAppId";

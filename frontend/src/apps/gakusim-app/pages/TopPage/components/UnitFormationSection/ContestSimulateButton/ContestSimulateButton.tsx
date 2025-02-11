@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { RiArrowRightLine } from "react-icons/ri";
 
 import { useContestSimulateButton } from "./ContestSimulateButton.hooks";

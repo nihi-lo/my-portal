@@ -1,5 +1,5 @@
 import { CSS } from "@dnd-kit/utilities";
-import { Link } from "@nextui-org/react";
+import { Link } from "@heroui/react";
 
 import { type SubAppId } from "@/types/subAppId";
 

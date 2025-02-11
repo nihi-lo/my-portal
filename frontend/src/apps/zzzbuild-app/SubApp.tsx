@@ -1,4 +1,4 @@
-import { Image } from "@nextui-org/react";
+import { Image } from "@heroui/react";
 import { Routes, Route } from "react-router-dom";
 
 import { NotFoundPage } from "@/pages/NotFoundPage";

@@ -1,4 +1,4 @@
-import { Button, Chip, Input, type InputProps } from "@nextui-org/react";
+import { Button, Chip, Input, type InputProps } from "@heroui/react";
 import { RiSearchLine } from "react-icons/ri";
 
 import { useSearchInput } from "./SearchInput.hooks";

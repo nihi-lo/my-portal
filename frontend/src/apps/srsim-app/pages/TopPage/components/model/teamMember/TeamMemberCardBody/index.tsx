@@ -1,4 +1,4 @@
-import { CardBody, Input, Tab, Tabs } from "@nextui-org/react";
+import { CardBody, Input, Tab, Tabs } from "@heroui/react";
 
 import { assets } from "@/apps/srsim-app/assets";
 import { HStack, VStack } from "@/components/ui";
